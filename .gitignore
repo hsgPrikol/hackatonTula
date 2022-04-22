@@ -2,7 +2,8 @@
 # You should customize this list as applicable to your project.
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
-
+build-SuperServer-3_Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
+build-SuperServer-3_Desktop_Qt_5_15_2_MinGW_64_bit-Release/
 # Node artifact files
 node_modules/
 dist/
