@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Autorization.qml</file>
+        <file>picture/backgroundTextField.png</file>
+        <file>picture/phone.jpg</file>
+        <file>picture/backgroundLabel.png</file>
+        <file>Registration.qml</file>
+        <file>Burgermenu.qml</file>
+        <file>Supporting.qml</file>
+        <file>Aboutauthors.qml</file>
+        <file>Settings.qml</file>
+        <file>SettingsProfile.qml</file>
     </qresource>
 </RCC>
