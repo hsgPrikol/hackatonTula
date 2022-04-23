@@ -152,7 +152,30 @@ public slots:
     void setStagePlant(QString instID, QString newValueStage);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 signals:
+    void onAnswerAuthorization(bool result);
+    void onAnswerRegistration(bool result);
 
+    void onAnswerInformationAboutUser();
+
+    void onAnswerPlantsUser();
+
+    //void onAnswerNameIdFromGlossary();
+    //void onAnswerDescriptionFromGlossary();
+    //void onAnswerCareInfoFromGlossary();
+    //void onAnswerAvatarFromGlossary();
+    void onAnswerAllDataFromGlossary();
+
+    void onAnswerUserTask();
+
+    void onAnswerMediaForFarmerPlantAll();
+    //void onAnswerMediaForFarmerPlantOne();
+
+    void onAnswerLogForUser();
+    //void onAnswerLogForPlant();
+
+    //void onAnswerAchivementsUser();
+    //void onAnswerInfoAboutAchivement();
+    void onAnswerAllDataAchivementsUser();
 };
 
 #endif // CLIENTGENERAL_H

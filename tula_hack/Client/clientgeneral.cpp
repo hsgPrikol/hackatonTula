@@ -113,10 +113,13 @@ void ClientGeneral::handlerAuthorization(QJsonObject *object)
     {
         // успешная авторизация
         isAuthorization = true;
+
+        emit onAnswerAuthorization(true);
     }
     else
     {
         // не авторизовался по какой то причине
+        emit onAnswerAuthorization(false);
     }
 }
 
@@ -128,10 +131,12 @@ void ClientGeneral::handlerRegistration(QJsonObject *object)
     {
         // успешная регистрация
         isAuthorization = true;
+        emit onAnswerRegistration(true);
     }
     else
     {
         // не зарегистрировался по какой то причине
+        emit onAnswerRegistration(false);
     }
 }
 
@@ -150,6 +155,8 @@ void ClientGeneral::handlerInformationAboutUser(QJsonObject *object)
         farmer.mail = ((*object)[ProtocolCommunication::___E_MAIL]).toString();
         farmer.registration_date = QDateTime::fromString(((*object)[ProtocolCommunication::___DATE_TIME]).toString());
         farmer.user_name = ((*object)[ProtocolCommunication::___NAME]).toString();
+
+        emit onAnswerInformationAboutUser();
     }
     else
     {
@@ -189,6 +196,8 @@ void ClientGeneral::handlerPlantsUser(QJsonObject *object)
 
             plantsFarmer[farmerPlant->inst_id] = *farmerPlant;
         }
+
+        emit onAnswerPlantsUser();
     }
     else
     {
@@ -242,6 +251,8 @@ void ClientGeneral::handlerAllDataFromGlossary(QJsonObject *object)
 
             plants[plant->id] = *plant;
         }
+
+        emit onAnswerAllDataFromGlossary();
     }
     else
     {
@@ -274,6 +285,8 @@ void ClientGeneral::handlerUserTask(QJsonObject *object)
 
             tasksFarmer[farmerTask->id] = *farmerTask;
         }
+
+        emit onAnswerUserTask();
     }
     else
     {
@@ -310,6 +323,8 @@ void ClientGeneral::handlerMediaForFarmerPlantAll(QJsonObject *object)
 
             plantsFarmer[inst_id].mediasPlant.push_back(*mediaPlant);
         }
+
+        emit onAnswerMediaForFarmerPlantAll();
     }
     else
     {
@@ -355,6 +370,8 @@ void ClientGeneral::handlerLogForUser(QJsonObject *object)
 
             plantsFarmer[log->inst_id].logs.push_back(*log);
         }
+
+        emit onAnswerLogForUser();
     }
     else
     {
@@ -404,6 +421,8 @@ void ClientGeneral::handlerAllDataAchivementsUser(QJsonObject *object)
 
             achivementFarmer[achivement->id] = *achivement;
         }
+
+        emit onAnswerAllDataAchivementsUser();
     }
     else
     {
