@@ -12,6 +12,7 @@ SOURCES += \
         achivement.cpp \
         farmer.cpp \
         farmerplant.cpp \
+        farmertask.cpp \
         instruments.cpp \
         logplant.cpp \
         main.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     achivement.h \
     farmer.h \
     farmerplant.h \
+    farmertask.h \
     instruments.h \
     logplant.h \
     mediaplant.h \

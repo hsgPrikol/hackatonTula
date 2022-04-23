@@ -14,6 +14,7 @@ public:
     Instruments();
     static QDate getDate(QString date);
     static QDateTime getDateTime(QString dateTime);
+    static QString byteArrayToString(QByteArray bytes);
 };
 
 #endif // INSTRUMENTS_H

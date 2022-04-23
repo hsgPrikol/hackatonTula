@@ -10,7 +10,7 @@ ServerController::ServerController()
 bool ServerController::startServer()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase");
+    //    db.setDatabaseName("C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase");
     db.setDatabaseName("C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase");
     if(db.open()){
         return true;
@@ -26,6 +26,14 @@ ServerController *ServerController::getInstance()
     return instance;
 }
 
+int ServerController::getLastId(QString table, QString column, QString where)
+{
+    auto str = QString("SELECT %0 FROM %1 %3 ORDER BY %0 DESC LIMIT 1").arg(column).arg(table).arg(where);
+    QSqlQuery query(str);
+    query.first();
+    return ivalue(0);
+}
+
 int ServerController::confirmAuthorization(QString login, QString passhash)
 {
     auto str = QString("SELECT login, password FROM farmer where login = '%0';").arg(login.toLower());
@@ -33,31 +41,83 @@ int ServerController::confirmAuthorization(QString login, QString passhash)
 
     if(!query.first()){
         qDebug() << QString("login '%0': not exist").arg(login.toLower());
-        return -1;
+        return 1;
     }
     else{
         QString true_hash_pass = svalue(1);
         if(true_hash_pass == passhash){
             // add user to adffklhaddgvklds
             qDebug() << QString("login '%0': successful authorization").arg(login.toLower());
-            return 1;
+            return 0;
         }
         else{
             // poshol
             qDebug() << QString("login '%0': wrong password").arg(login.toLower());
-            return 0;
+            return 2;
         }
     }
 }
 
 Farmer *ServerController::getUser(QString login)
 {
-    auto str = QString("SELECT mail, user_name, avatar, birth_date, registration_date, carm, exp FROM farmer WHERE login = '%0';").arg(login);
+    auto str = QString("SELECT mail, password, user_name, avatar, birth_date, registration_date, carm, exp "
+"FROM farmer WHERE login = '%0';").arg(login);
     QSqlQuery query(str);
     if(!query.first())
         return nullptr;
-    Farmer* user= new Farmer(login,svalue(0), svalue(1), query.value(2).toByteArray(), Instruments::getDate(svalue(3)), Instruments::getDateTime(svalue(4)), ivalue(5), ivalue(6));
+    Farmer* user= new Farmer(login,svalue(0), svalue(1), svalue(2), query.value(3).toByteArray(), Instruments::getDate(svalue(4)), Instruments::getDateTime(svalue(5)), ivalue(6), ivalue(7));
     return user;
+}
+
+int ServerController::registrationUser(Farmer farmer)
+{
+    auto str = QString("SELECT login FROM farmer where login = '%0';").arg(farmer.login.toLower());
+    QSqlQuery query(str);
+
+    if(query.first()){
+        qDebug() << QString("login '%0': exist").arg(farmer.login.toLower());
+        return 1;
+    }
+
+    str = QString("SELECT mail FROM farmer where mail = '%0';").arg(farmer.mail.toLower());
+    query = QSqlQuery(str);
+
+    if(query.first()){
+        qDebug() << QString("mail '%0': exist").arg(farmer.login.toLower());
+        return 2;
+    }
+
+    str = QString("INSERT INTO farmer (login,password,mail,user_name,avatar,birth_date)"
+                  " VALUES ('%0','%1','%2','%3','%4','%5');")
+            .arg(farmer.login)
+            .arg(farmer.password)
+            .arg(farmer.mail)
+            .arg(farmer.user_name)
+            .arg(QString(farmer.avatar))
+            .arg(farmer.birth_date.toString());
+
+    query = QSqlQuery(str);
+    query.exec();
+
+    str = QString("SELECT id, aim FROM achivements;").arg(farmer.mail.toLower());
+    query = QSqlQuery(str);
+    while(query.next())
+    {
+        int id_ach=ivalue(0);
+        int aim=ivalue(1);
+
+        str = QString("INSERT INTO user_achivements (id_achivement,login,status)"
+                      " VALUES ('%0','%1','%2');")
+                .arg(id_ach)
+                .arg(farmer.login)
+                .arg(aim);
+        query = QSqlQuery(str);
+        query.exec();
+    }
+
+
+
+    return 0;
 }
 
 Plant *ServerController::getPlant(int id)
@@ -192,6 +252,63 @@ QVector<FarmerPlant> ServerController::getAlFarmerPlant(QString login_Famer)
     return farmerPlants;
 }
 
+FarmerTask *ServerController::getFarmerTask(int id_task, QString login)
+{
+    auto str = QString("SELECT text, date FROM user_task WHERE id = %0 AND login = '%1';").arg(id_task).arg(login);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    FarmerTask* farmerTask= new FarmerTask(id_task,login, svalue(0), Instruments::getDateTime(svalue(1)));
+
+    return farmerTask;
+}
+
+QVector<FarmerTask> ServerController::getAllFarmerTask(QString login)
+{
+    auto str = QString("SELECT id FROM user_task WHERE login = '%0';").arg(login);
+    QSqlQuery query(str);
+
+    QVector<FarmerTask> farmerTasks;
+
+    while(query.next())
+    {
+        int farmerTask_id = ivalue(0);
+        FarmerTask* farmerTask=getFarmerTask(farmerTask_id, login);
+        farmerTasks.append(*farmerTask);
+    }
+
+    return farmerTasks;
+}
+
+int ServerController::addFarmerTask(FarmerTask task)
+{
+    int newId=getLastId("user_task","id", QString("WHERE login = '%0'").arg(task.login))+1;
+
+    auto str = QString("INSERT INTO  user_task (id, login, text, date)"
+                  " VALUES ('%0','%1','%2', '%3');")
+            .arg(newId)
+            .arg(task.login)
+            .arg(task.text)
+            .arg(task.dateTime.toString());
+
+    QSqlQuery query = QSqlQuery(str);
+    query.exec();
+
+    return 0;
+}
+
+int ServerController::removeFarmerTask(int id_task, QString login)
+{
+    auto str = QString("DELETE FROM user_task WHERE id = %0 AND login = '%1';")
+            .arg(id_task)
+            .arg(login);
+
+    QSqlQuery query = QSqlQuery(str);
+    query.exec();
+
+    return 0;
+}
+
 Achivement *ServerController::getAchivment(int id_ach, QString login_Farmer)
 {
     auto str = QString("SELECT name, info, aim, status, image FROM user_achivements "
@@ -220,6 +337,36 @@ QVector<Achivement> ServerController::getAllAchivments(QString login_Farmer)
     }
 
     return achivements;
+}
+
+int ServerController::addAchivment(Achivement achivement)
+{
+    auto str = QString("INSERT INTO achivements (info, aim, name, image) VALUES ('%0', %1, '%2', '%3');")
+            .arg(achivement.info)
+            .arg(achivement.aim)
+            .arg(achivement.name)
+            .arg(QString(achivement.image));
+    QSqlQuery query(str);
+    //query.exec();
+
+    int id_ach=getLastId("achivements","id");
+
+    str = QString("SELECT login FROM farmer;");
+    query = QSqlQuery(str);
+    while(query.next())
+    {
+        QString login=svalue(0);
+
+        str = QString("INSERT INTO user_achivements (id_achivement,login,status)"
+                      " VALUES ('%0','%1','%2');")
+                .arg(id_ach)
+                .arg(login)
+                .arg(achivement.aim);
+        QSqlQuery queryAc = QSqlQuery(str);
+        queryAc.exec();
+    }
+
+    return 0;
 }
 
 
