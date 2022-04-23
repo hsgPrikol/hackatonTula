@@ -78,7 +78,7 @@ color: "black"
     Loader{
         id: loader
 
-        sourceComponent: plantcreator
+        sourceComponent: page
     }
 
     Component{
@@ -86,6 +86,13 @@ color: "black"
 
         Burgermenu{
             id: burgermenu
+        }
+    }
+
+    Component{
+        id: page
+        PlantPage{
+
         }
     }
 }

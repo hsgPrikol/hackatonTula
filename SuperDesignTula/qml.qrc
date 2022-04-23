@@ -33,5 +33,18 @@
         <file>PlantCreator.qml</file>
         <file>picture/strawberry.tif</file>
         <file>picture/strawberry.svg</file>
+        <file>PlantPage.qml</file>
+        <file>PlantInfo.qml</file>
+        <file>picture/edit.png</file>
+        <file>PlantControl.qml</file>
+        <file>picture/aaaaaaaaaa.png</file>
+        <file>PlantStage.qml</file>
+        <file>picture/stage1.png</file>
+        <file>picture/stage2.png</file>
+        <file>picture/stage3.png</file>
+        <file>picture/stage4.png</file>
+        <file>PlantPhotos.qml</file>
+        <file>Photo.qml</file>
+        <file>picture/Рисунок1.jpg</file>
     </qresource>
 </RCC>
