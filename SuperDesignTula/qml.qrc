@@ -18,6 +18,21 @@
         <file>picture/water.png</file>
         <file>picture/light.png</file>
         <file>picture/temperature.png</file>
+        <file>PlantButton.qml</file>
+        <file>TaskPlant.qml</file>
+        <file>picture/wind.png</file>
+        <file>Planner.qml</file>
+        <file>PlannerMonth.qml</file>
+        <file>picture/azalia.png</file>
+        <file>picture/berry.png</file>
+        <file>picture/design.png</file>
+        <file>picture/flowers.png</file>
+        <file>picture/weather.png</file>
+        <file>picture/wet.png</file>
+        <file>Articles.qml</file>
+        <file>PlantCreator.qml</file>
+        <file>picture/strawberry.tif</file>
+        <file>picture/strawberry.svg</file>
         <file>MenuElement.qml</file>
         <file>picture/Achivments.png</file>
         <file>picture/Calendar.png</file>

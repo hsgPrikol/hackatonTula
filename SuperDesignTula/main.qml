@@ -73,6 +73,34 @@ color: "#3fae51"
     }
 
     Component{
+        id: taskPlant
+        TaskPlant{
+
+        }
+    }
+
+    Component{
+        id: planner
+        Planner{
+
+        }
+    }
+
+    Component{
+        id: articles
+        Articles{
+
+        }
+    }
+
+    Component{
+        id: plantcreator
+        PlantCreator{
+
+        }
+    }
+
+    Component{
         id: cirkleProgressBar
 
         Cirkleprogressbar{
@@ -91,6 +119,7 @@ color: "#3fae51"
     Loader{
         id: loader
 
+        sourceComponent: plantcreator
 //        sourceComponent: plantElement
         sourceComponent: plantsListComponent
     }

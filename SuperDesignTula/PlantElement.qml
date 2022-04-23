@@ -6,6 +6,16 @@ Item {
     width: 480
     height: 210
 
+    property string stage_textfield: "I"
+    property string username: "Клава"
+    property string name: "Клубника (Земляника)"
+
+    property string icon_path: "qrc:/picture/strawberry.png"
+
+    property string water_data_text: "39%"
+    property string temperature_data_text: "22 ⁰С"
+    property string light_data_text: "--"
+
     Rectangle{
         id: background
         anchors.fill: root
@@ -26,7 +36,7 @@ Item {
                 Text{
                     id: plant_username
                     font.pixelSize: 30
-                    text: "Клава"
+                    text: username
                     font.family: "Calibri Light"
                     width: 250
                     height: header.height
@@ -38,7 +48,7 @@ Item {
                 Text{
                     id: plant_name
                     font.pixelSize: 20
-                    text: "Клубника (Земляника)"
+                    text: name
                     font.family: "Calibri Light"
                     color: "#7F7F7F"
                     anchors.right: header.right
@@ -74,7 +84,7 @@ Item {
                         width: image_background.width - 60
                         height: width
                         anchors.centerIn: image_background
-                        source: "qrc:/picture/strawberry.png"
+                        source: icon_path
                     }
 
                     Rectangle{
@@ -92,7 +102,7 @@ Item {
                             id: stage_text
                             color:"#f5f5f5"
                             font.pixelSize: 23
-                            text: "I"
+                            text: stage_textfield
                             font.family: "Times New Roman"
                             anchors.centerIn: stage_background
                         }
@@ -124,37 +134,46 @@ Item {
                             id: water_data
                             font.pixelSize: 20
                             font.family: "Calibri Light"
-                            text: "39%"
+                            text: water_data_text
                             width: 50
                             anchors.verticalCenter: water_row.verticalCenter
                             anchors.horizontalCenter: element_column.horizontalCenter
                             horizontalAlignment: Text.AlignHCenter
                         }
+//                        PlantButton{
+//                            is_active: true
+//                        }
 
-                        Rectangle {
+
+                        PlantButton{
                             id: water_button
-                            width: 150
-                            height: 40
-                            color: mouseArea_water.containsPress ? Qt.darker("#3fae51") : "#3fae51"
-                            radius: water_button.height / 4
-                            opacity: 0.9
-                            anchors.verticalCenter: water_icon.verticalCenter
-
-                            Text {
-                                color: "#f5f5f5"
-                                text: "Полить"
-                                font.pixelSize: 20
-                                anchors.fill: parent
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            MouseArea {
-                                id: mouseArea_water
-                                anchors.fill: water_button
-                                //hoverEnabled: true
-                            }
+                            mode: "water"
                         }
+
+//                        Rectangle {
+//                            id: water_button
+//                            width: 150
+//                            height: 40
+//                            color: mouseArea_water.containsPress ? Qt.darker("#3fae51") : "#3fae51"
+//                            radius: water_button.height / 4
+//                            opacity: 0.9
+//                            anchors.verticalCenter: water_icon.verticalCenter
+
+//                            Text {
+//                                color: "#f5f5f5"
+//                                text: "Полить"
+//                                font.pixelSize: 20
+//                                anchors.fill: parent
+//                                horizontalAlignment: Text.AlignHCenter
+//                                verticalAlignment: Text.AlignVCenter
+//                            }
+
+//                            MouseArea {
+//                                id: mouseArea_water
+//                                anchors.fill: water_button
+//                                //hoverEnabled: true
+//                            }
+//                        }
                     }
 
 
@@ -178,37 +197,45 @@ Item {
                             id: temperature_data
                             font.pixelSize: 20
                             font.family: "Calibri Light"
-                            text: "22 ⁰С"
+                            text: temperature_data_text
                             width: 50
                             anchors.verticalCenter: temperature_row.verticalCenter
                             anchors.horizontalCenter: element_column.horizontalCenter
                             horizontalAlignment: Text.AlignHCenter
                         }
 
-                        Rectangle {
+
+                        PlantButton{
                             id: temperature_button
-                            width: 150
-                            height: 40
-                            color: mouseArea_temperature.containsPress ? Qt.darker("#3fae51") : "#3fae51"
-                            radius: temperature_button.height / 4
-                            opacity: 0.9
-                            anchors.verticalCenter: temperature_icon.verticalCenter
-
-                            Text {
-                                color: "#f5f5f5"
-                                text: "Через 9 ч."
-                                font.pixelSize: 20
-                                anchors.fill: parent
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            MouseArea {
-                                id: mouseArea_temperature
-                                anchors.fill: temperature_button
-                                //hoverEnabled: true
-                            }
+                            mode: "temperature"
+                            is_active: false
+                            button_text: "Через 9 ч."
                         }
+
+//                        Rectangle {
+//                            id: temperature_button
+//                            width: 150
+//                            height: 40
+//                            color: mouseArea_temperature.containsPress ? Qt.darker("#3fae51") : "#3fae51"
+//                            radius: temperature_button.height / 4
+//                            opacity: 0.9
+//                            anchors.verticalCenter: temperature_icon.verticalCenter
+
+//                            Text {
+//                                color: "#f5f5f5"
+//                                text: "Через 9 ч."
+//                                font.pixelSize: 20
+//                                anchors.fill: parent
+//                                horizontalAlignment: Text.AlignHCenter
+//                                verticalAlignment: Text.AlignVCenter
+//                            }
+
+//                            MouseArea {
+//                                id: mouseArea_temperature
+//                                anchors.fill: temperature_button
+//                                //hoverEnabled: true
+//                            }
+//                        }
                     }
 
                     Row{
@@ -231,7 +258,7 @@ Item {
                             id: light_data
                             font.pixelSize: 20
                             font.family: "Calibri Light"
-                            text: "--"
+                            text: light_data_text
                             width: 50
                             anchors.verticalCenter: light_row.verticalCenter
                             anchors.horizontalCenter: element_column.horizontalCenter
@@ -239,30 +266,36 @@ Item {
                         }
 
 
-                        Rectangle {
+                        PlantButton{
                             id: light_button
-                            width: 150
-                            height: 40
-                            color: mouseArea_light.containsPress ? Qt.darker("#3fae51") : "#3fae51"
-                            radius: light_button.height / 4
-                            opacity: 0.9
-                            anchors.verticalCenter: light_icon.verticalCenter
-
-                            Text {
-                                color: "#f5f5f5"
-                                text: "Включить"
-                                font.pixelSize: 20
-                                anchors.fill: parent
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            MouseArea {
-                                id: mouseArea_light
-                                anchors.fill: light_button
-                                //hoverEnabled: true
-                            }
+                            button_text: "Включить"
+                            is_overdue: true
                         }
+
+//                        Rectangle {
+//                            id: light_button
+//                            width: 150
+//                            height: 40
+//                            color: mouseArea_light.containsPress ? Qt.darker("#3fae51") : "#3fae51"
+//                            radius: light_button.height / 4
+//                            opacity: 0.9
+//                            anchors.verticalCenter: light_icon.verticalCenter
+
+//                            Text {
+//                                color: "#f5f5f5"
+//                                text: "Включить"
+//                                font.pixelSize: 20
+//                                anchors.fill: parent
+//                                horizontalAlignment: Text.AlignHCenter
+//                                verticalAlignment: Text.AlignVCenter
+//                            }
+
+//                            MouseArea {
+//                                id: mouseArea_light
+//                                anchors.fill: light_button
+//                                //hoverEnabled: true
+//                            }
+//                        }
                     }
 
 

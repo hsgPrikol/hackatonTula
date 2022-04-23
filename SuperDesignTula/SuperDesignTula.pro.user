@@ -574,8 +574,10 @@
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/rota/Documents/GitHub/cyberpark2022/SuperDesignTula/SuperDesignTula.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Tihon/Documents/cyberpark2022/build-SuperDesignTula-3_Desktop_Qt_5_15_2_MinGW_64_bit-Debug</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
