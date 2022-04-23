@@ -7,7 +7,8 @@
 #include <QWebSocket>
 #include <QJsonArray>
 #include <QMap>
-#include <../protocolcommunication.h>
+
+#include "../protocolcommunication.h"
 #include "../../SuperServer/farmer.h"
 #include "../../SuperServer/farmerplant.h"
 #include "../../SuperServer/plant.h"
@@ -176,6 +177,9 @@ signals:
     //void onAnswerAchivementsUser();
     //void onAnswerInfoAboutAchivement();
     void onAnswerAllDataAchivementsUser();
+
+
+//    void onAddPlantFarmer(int, )
 };
 
 #endif // CLIENTGENERAL_H

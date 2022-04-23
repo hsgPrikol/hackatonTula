@@ -13,7 +13,7 @@ bool ServerController::startServer()
                                "C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase",
                                "C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase",
                                "C:/Users/Administrator/Desktop/SuperDataBase",
-                               "C:/Users/test/Desktop/tula_hack/git/cyberpark2022/SuperDataBase"
+                               "C:/Users/test/Desktop/tula_hack/git/cyberpark2022/SuperDataBase", "C:\\Users\\rota\\Documents\\GitHub\\cyberpark2022\\SuperDataBase"
                            });
 
     db = QSqlDatabase::addDatabase("QSQLITE");

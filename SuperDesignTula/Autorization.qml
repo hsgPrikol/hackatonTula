@@ -10,6 +10,14 @@ Rectangle {
     property real customOpacity: 0.7
     property int fontSize: 18
 
+    function onAutorization(flag)
+    {
+        if (flag)
+            loader.sourceComponent = plannerComponent
+        else
+            console.log("Error autorization")
+    }
+
     Rectangle {
         width: parent.width
         height: parent.height
@@ -226,10 +234,14 @@ Rectangle {
             id: mouseArea
             anchors.fill: parent
             //hoverEnabled: true
-
-
-
+            onClicked: {
+                client.sendAuthorization(login.text, password.text)
+            }
         }
+    }
+
+    Component.onCompleted: {
+        client.onAnswerAuthorization.connect(onAutorization);
     }
 }
 

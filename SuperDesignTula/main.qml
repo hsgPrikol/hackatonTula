@@ -133,7 +133,7 @@ color: "#3fae51"
 
 //        sourceComponent: plantcreator
 //        sourceComponent: plantElement
-        sourceComponent: plannerComponent
+        sourceComponent: autorizationComponent
 
 
 

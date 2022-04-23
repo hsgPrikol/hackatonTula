@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "dataleft.h"
 #include <QQmlContext>
+#include <../tula_hack/Client/clientgeneral.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,9 @@ int main(int argc, char *argv[])
 
     DateLeft dataleft;
 
+    ClientGeneral client;
+
+    engine.rootContext()->setContextProperty("client", &client);
     engine.rootContext()->setContextProperty("dateLeft", &dataleft);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
