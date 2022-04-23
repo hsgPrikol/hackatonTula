@@ -17,5 +17,9 @@ int main(int argc, char *argv[])
     auto a5=controller->getAllPlant();
 
     auto a6=controller->getFarmerPlant(1);
+    auto a7=controller->getAlFarmerPlant("maksim");
+
+    auto a8=controller->getAchivment(1,"maksim");
+    auto a9=controller->getAllAchivments("maksim");
     return a.exec();
 }

@@ -10,7 +10,8 @@ ServerController::ServerController()
 bool ServerController::startServer()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase");
+//    db.setDatabaseName("C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase");
+    db.setDatabaseName("C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase");
     if(db.open()){
         return true;
     } else {
@@ -55,11 +56,7 @@ Farmer *ServerController::getUser(QString login)
     QSqlQuery query(str);
     if(!query.first())
         return nullptr;
-    auto d1=svalue(3);
-    auto d2=svalue(4);
-    QDateTime registration_date=QDateTime::fromString(d2, "yyyy-MM-dd hh:mm:ss");
-    QDate birth_date=QDate::fromString(d1, "dd-MM-yyyy");
-    Farmer* user= new Farmer(login,svalue(0), svalue(1), query.value(2).toByteArray(), birth_date, registration_date, ivalue(5), ivalue(6));
+    Farmer* user= new Farmer(login,svalue(0), svalue(1), query.value(2).toByteArray(), Instruments::getDate(svalue(3)), Instruments::getDateTime(svalue(4)), ivalue(5), ivalue(6));
     return user;
 }
 
@@ -99,17 +96,130 @@ QString ServerController::getTypePlant(int id)
     return svalue(0);
 }
 
+MediaPlant *ServerController::getMediaPlant(int id_media)
+{
+    auto str = QString("SELECT inst_id, description, image, datetime FROM media_plant WHERE id = %0;").arg(id_media);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    MediaPlant* media= new MediaPlant(id_media, ivalue(0), svalue(1),  query.value(2).toByteArray(), Instruments::getDateTime(svalue(3)));
+    return media;
+}
+
+QVector<MediaPlant> ServerController::getAllMediaPlant(int id)
+{
+    auto str = QString("SELECT id FROM media_plant WHERE inst_id=%0;").arg(id);
+    QSqlQuery query(str);
+
+    QVector<MediaPlant> mediasPlant;
+
+    while(query.next())
+    {
+        int plant_id = ivalue(0);
+        MediaPlant* mediaPlant=getMediaPlant(plant_id);
+        mediasPlant.append(*mediaPlant);
+    }
+
+    return mediasPlant;
+}
+
+QString ServerController::getActionType(int id_action)
+{
+    auto str = QString("SELECT name FROM action_type WHERE id = %0;").arg(id_action);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    return svalue(0);
+}
+
+LogPlant* ServerController::getLogPlant(int id_log, int id_plant)
+{
+    auto str = QString("SELECT id_action, date FROM log WHERE id = %0 AND inst_id = %1;").arg(id_log).arg(id_plant);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+
+    QString action=getActionType(ivalue(0));
+    LogPlant* log= new LogPlant(id_log, id_plant, action,  Instruments::getDateTime(svalue(1)));
+    return log;
+}
+
+QVector<LogPlant> ServerController::getAllLogPlant(int id_plant)
+{
+    auto str = QString("SELECT id FROM log WHERE inst_id=%0;").arg(id_plant);
+    QSqlQuery query(str);
+
+    QVector<LogPlant> logs;
+
+    while(query.next())
+    {
+        int log_id = ivalue(0);
+        LogPlant* log=getLogPlant(log_id, id_plant);
+        logs.append(*log);
+    }
+
+    return logs;
+}
+
 FarmerPlant *ServerController::getFarmerPlant(int id)
 {
     auto str = QString("SELECT login, plant_id, stage, created_date, type_id, status, name, avatar FROM farmer_plant WHERE inst_id = %0;").arg(id);
     QSqlQuery query(str);
     if(!query.first())
         return nullptr;
-    auto d2=svalue(3);
-    QDateTime created_date=QDateTime::fromString(d2, "yyyy-MM-dd hh:mm:ss");
     QString type=getTypePlant(ivalue(4));
-    FarmerPlant* farmerPlant= new FarmerPlant(id, svalue(0), ivalue(1), ivalue(2), created_date, type,ivalue(5), svalue(6), query.value(7).toByteArray() );
+    FarmerPlant* farmerPlant= new FarmerPlant(id, svalue(0), ivalue(1), ivalue(2), Instruments::getDateTime(svalue(3)), type,ivalue(5), svalue(6), query.value(7).toByteArray() );
+    farmerPlant->mediasPlant=getAllMediaPlant(id);
+    farmerPlant->logs=getAllLogPlant(id);
+
     return farmerPlant;
+}
+
+QVector<FarmerPlant> ServerController::getAlFarmerPlant(QString login_Famer)
+{
+    auto str = QString("SELECT inst_id FROM farmer_plant WHERE login = '%0';").arg(login_Famer);
+    QSqlQuery query(str);
+
+    QVector<FarmerPlant> farmerPlants;
+
+    while(query.next())
+    {
+        int farmerPlant_id = ivalue(0);
+        FarmerPlant* farmerPlant=getFarmerPlant(farmerPlant_id);
+        farmerPlants.append(*farmerPlant);
+    }
+
+    return farmerPlants;
+}
+
+Achivement *ServerController::getAchivment(int id_ach, QString login_Farmer)
+{
+    auto str = QString("SELECT name, info, aim, status, image FROM user_achivements "
+                            "JOIN achivements ON id_achivement=id "
+                            "WHERE login = '%0' AND id = %1;")
+            .arg(login_Farmer).arg(id_ach);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    Achivement* ach= new Achivement(id_ach, svalue(0), svalue(1), ivalue(2), ivalue(3), query.value(4).toByteArray());
+    return ach;
+}
+
+QVector<Achivement> ServerController::getAllAchivments(QString login_Farmer)
+{
+    auto str = QString("SELECT id_achivement FROM user_achivements WHERE login = '%0';").arg(login_Farmer);
+    QSqlQuery query(str);
+
+    QVector<Achivement> achivements;
+
+    while(query.next())
+    {
+        int achivement_id = ivalue(0);
+        Achivement* achivement=getAchivment(achivement_id, login_Farmer);
+        achivements.append(*achivement);
+    }
+
+    return achivements;
 }
 
 

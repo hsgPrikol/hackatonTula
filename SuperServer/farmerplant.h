@@ -1,9 +1,9 @@
 #ifndef FARMERPLANT_H
 #define FARMERPLANT_H
 
-#include <QString>
-#include <QByteArray>
-#include <QDateTime>
+#include <instruments.h>
+#include "mediaplant.h"
+#include "logplant.h"
 
 class FarmerPlant
 {
@@ -17,6 +17,9 @@ public:
     int status;
     QString name;
     QByteArray avatar;
+
+    QVector<MediaPlant> mediasPlant;
+    QVector<LogPlant> logs;
 
     FarmerPlant();
     FarmerPlant(int _inst_id,QString _login,int _plant_id,int _stage,QDateTime _created_date,QString _type,int _status,QString _name,QByteArray _avatar):

@@ -1,10 +1,7 @@
 #ifndef FARMER_H
 #define FARMER_H
 
-#include <QString>
-#include <QByteArray>
-#include <QDate>
-#include <QDateTime>
+#include <instruments.h>
 
 class Farmer
 {

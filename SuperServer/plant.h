@@ -1,8 +1,7 @@
 #ifndef PLANT_H
 #define PLANT_H
 
-#include <QString>
-#include <QByteArray>
+#include <instruments.h>
 
 class Plant
 {
