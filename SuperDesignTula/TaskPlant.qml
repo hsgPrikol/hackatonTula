@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 500
+    width: 480
     height: 50
 
     Rectangle{
@@ -88,8 +88,9 @@ Item {
             anchors.right: background.right
             anchors.rightMargin: 5
             anchors.verticalCenter: background.verticalCenter
-            is_active: false
-            is_overdue: false
+//            is_active: false
+//            is_overdue: false
+            button_text: "Полить"
             width: 150
         }
     }

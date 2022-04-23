@@ -21,5 +21,7 @@
         <file>PlantButton.qml</file>
         <file>TaskPlant.qml</file>
         <file>picture/wind.png</file>
+        <file>Planner.qml</file>
+        <file>PlannerMonth.qml</file>
     </qresource>
 </RCC>

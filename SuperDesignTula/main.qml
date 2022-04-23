@@ -54,10 +54,17 @@ color: "black"
         }
     }
 
+    Component{
+        id: planner
+        Planner{
+
+        }
+    }
+
     Loader{
         id: loader
 
-        sourceComponent: plantElement
+        sourceComponent: planner
     }
 
     Component{
