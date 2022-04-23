@@ -61,10 +61,17 @@ color: "black"
         }
     }
 
+    Component{
+        id: articles
+        Articles{
+
+        }
+    }
+
     Loader{
         id: loader
 
-        sourceComponent: planner
+        sourceComponent: articles
     }
 
     Component{

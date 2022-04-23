@@ -23,5 +23,12 @@
         <file>picture/wind.png</file>
         <file>Planner.qml</file>
         <file>PlannerMonth.qml</file>
+        <file>picture/azalia.png</file>
+        <file>picture/berry.png</file>
+        <file>picture/design.png</file>
+        <file>picture/flowers.png</file>
+        <file>picture/weather.png</file>
+        <file>picture/wet.png</file>
+        <file>Articles.qml</file>
     </qresource>
 </RCC>
