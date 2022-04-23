@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include "servergeneral.h"
+#include "../../SuperServer/servercontroller.h"
 
 int main(int argc, char *argv[])
 {

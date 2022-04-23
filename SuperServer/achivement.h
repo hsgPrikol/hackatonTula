@@ -13,7 +13,9 @@ enum actionAchivement
     compleatedMedia,
     addFarmerTask,
     removeFarmerTask,
-    addLog
+    addLog,
+    upStage,
+    upStatus
 };
 
 class Achivement

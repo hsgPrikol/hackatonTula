@@ -12,7 +12,8 @@ bool ServerController::startServer()
     QVector<QString> paths({
                                "C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase",
                                "C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase",
-                               "C:/Users/Administrator/Desktop/SuperDataBase"
+                               "C:/Users/Administrator/Desktop/SuperDataBase",
+                               "C:/Users/test/Desktop/tula_hack/git/cyberpark2022/SuperDataBase"
                            });
 
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -239,7 +240,7 @@ LogPlant* ServerController::getLogPlant(int id_log, int id_plant)
         return nullptr;
 
     QString action=getActionType(ivalue(0));
-    LogPlant* log= new LogPlant(id_log, id_plant, action,  Instruments::getDateTime(svalue(1)));
+    LogPlant* log= new LogPlant(id_log, id_plant, action,ivalue(0),  Instruments::getDateTime(svalue(1)));
     return log;
 }
 
@@ -254,6 +255,25 @@ QVector<LogPlant> ServerController::getAllLogPlant(int id_plant)
     {
         int log_id = ivalue(0);
         LogPlant* log=getLogPlant(log_id, id_plant);
+        logs.append(*log);
+    }
+
+    return logs;
+}
+
+QVector<LogPlant> ServerController::getAllLogUser(QString login)
+{
+    auto str = QString("SELECT l.id, l.inst_id FROM farmer_plant f "
+                        "JOIN log l ON f.inst_id=l.inst_id WHERE f.login = '%0';").arg(login);
+    QSqlQuery query(str);
+
+    QVector<LogPlant> logs;
+
+    while(query.next())
+    {
+        int log_id = ivalue(0);
+        int inst_id = ivalue(1);
+        LogPlant* log=getLogPlant(log_id, inst_id);
         logs.append(*log);
     }
 
@@ -319,6 +339,38 @@ QVector<FarmerPlant> ServerController::getAlFarmerPlant(QString login_Famer)
     }
 
     return farmerPlants;
+}
+
+int ServerController::setStagePlant(int inst_id, int new_value_stage, QString login)
+{
+    auto str = QString("UPDATE farmer_plant "
+                            "SET stage = %0 "
+                            "WHERE inst_id = %1;")
+            .arg(new_value_stage)
+            .arg(inst_id);
+
+    QSqlQuery query(str);
+    query.exec();
+
+    checkAchivement(login, actionAchivement::upStage);
+
+    return 0;
+}
+
+int ServerController::setStatusPlant(int inst_id, int new_value_status, QString login)
+{
+    auto str = QString("UPDATE farmer_plant "
+                            "SET stage = %0 "
+                            "status inst_id = %1;")
+            .arg(new_value_status)
+            .arg(inst_id);
+
+    QSqlQuery query(str);
+    query.exec();
+
+    checkAchivement(login, actionAchivement::upStatus);
+
+    return 0;
 }
 
 int ServerController::addFarmerPlant(FarmerPlant farmerPlant)

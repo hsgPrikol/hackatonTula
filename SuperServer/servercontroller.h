@@ -66,6 +66,8 @@ public:
     LogPlant *getLogPlant(int id_log, int id_plant);
     ///Получить ВСЕ логи по id цветка
     QVector<LogPlant> getAllLogPlant(int id_plant);
+    ///Получить ВСЕ логи пользователя по всем цветкам
+    QVector<LogPlant> getAllLogUser(QString login);
 
     ///Добавить лог
     int addLogPlant(LogPlant logPlant, QString login);
@@ -82,6 +84,12 @@ public:
     FarmerPlant* getFarmerPlant(int id);
     ///Получить ВСЕ растения фермера
     QVector<FarmerPlant> getAlFarmerPlant(QString login_Farmer);
+
+    ///Изменить этап роста растения
+    int setStagePlant(int inst_id, int new_value_stage, QString login);
+
+    ///Изменить статус растения
+    int setStatusPlant(int inst_id, int new_value_status, QString login);
 
     ///Добавить растение фермера
     int addFarmerPlant(FarmerPlant farmerPlant);

@@ -5,7 +5,14 @@
 #include <QFile>
 #include <QSslKey>
 #include <QWebSocket>
+#include <QJsonArray>
+#include <QMap>
 #include <../protocolcommunication.h>
+#include "../../SuperServer/farmer.h"
+#include "../../SuperServer/farmerplant.h"
+#include "../../SuperServer/plant.h"
+#include "../../SuperServer/farmertask.h"
+#include "../../SuperServer/achivement.h"
 
 class ClientGeneral : public QObject
 {
@@ -18,7 +25,14 @@ private:
 
     QWebSocket socketServer;
 
-private slots:
+    bool isAuthorization = false;
+    QString myLogin;
+    Farmer farmer;
+    QMap<int, FarmerPlant> plantsFarmer;
+    QMap<int, Plant> plants;
+    QMap<int, FarmerTask> tasksFarmer;
+    QMap<int, Achivement> achivementFarmer;
+
     void onConnected();
     void onTextMessageReceived(QString message);
     void onSslErrors(const QList<QSslError> &errors);
@@ -36,6 +50,7 @@ private slots:
     void handlerDescriptionFromGlossary(QJsonObject* object);
     void handlerCareInfoFromGlossary(QJsonObject* object);
     void handlerAvatarFromGlossary(QJsonObject* object);
+    void handlerAllDataFromGlossary(QJsonObject* object);
 
     void handlerUserTask(QJsonObject* object);
 
@@ -47,6 +62,7 @@ private slots:
 
     void handlerAchivementsUser(QJsonObject* object);
     void handlerInfoAboutAchivement(QJsonObject* object);
+    void handlerAllDataAchivementsUser(QJsonObject* object);
 public slots:
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,6 +98,9 @@ public slots:
 
     /// Отправка запроса на получение аватара растения из глоссария
     void sendGetAvatarFromGlossary(QString idPlant);
+
+    /// Отправка запроса на получении всей информации из глоссария
+    void sendGetAllDataFromGlossary();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,10 +116,10 @@ public slots:
     void sendGetMediaForFarmerPlantAll(QString idPlant);
 
     /// Отправка запроса на получение конкретного медиа контента для конкретного растения
-    void sendGetMediaForFarmerPlantOne(QString idPlant, QString idMedia);
+    void sendGetMediaForFarmerPlantOne(QString idMedia);
 
     /// Добавление нового медиа для конкретного растения
-    void sendAddMediaForFarmerPlant(QString description, QString image, QString datetime, QString instID);
+    void sendAddMediaForFarmerPlant(QString description, QString image, QString instID);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,7 +127,7 @@ public slots:
     void sendGetLogForUser(QString login);
 
     /// Отправка запроса на получение логов для конкретного растения пользователя
-    void sendGetLogForPlant(QString login, QString idPlant);
+    void sendGetLogForPlant(QString idPlant);
 
     /// Добавление новго лога пользователя по растению
     void sendAddLog(QString login, QString idPlant, QString idAction, QString datetime);
@@ -120,6 +139,17 @@ public slots:
 
     /// Отправка запроса на получение информации об ачивки
     void sendGetInfoAboutAchivement(QString id);
+
+    /// Отправка запроса на получение всех ачивок конкретного пользователя
+    void sendGetAllDataAchivementsUser(QString login);
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /// Изменение статуса растения
+    void setStatusPlant(QString instID, QString newValueStatus);
+
+    /// Изменение фазы роста растения
+    void setStagePlant(QString instID, QString newValueStage);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 signals:
 

@@ -11,6 +11,7 @@ const QString ProtocolCommunication::___CMD_GET_NAME_ID_FROM_GLOSSARY = QString(
 const QString ProtocolCommunication::___CMD_GET_DESCRIPTION_FROM_GLOSSARY = QString("get_description_from_glossary");
 const QString ProtocolCommunication::___CMD_GET_CARE_INFO_FROM_GLOSSARY = QString("get_care_info_from_glossary");
 const QString ProtocolCommunication::___CMD_GET_AVATAR_FROM_GLOSSARY = QString("get_avatar_from_glossary");
+const QString ProtocolCommunication::___CMD_GET_ALL_DATA_FROM_GLOSSARY = QString("get_all_data_from_glossary");
 const QString ProtocolCommunication::___CMD_GET_USER_TASK = QString("get_user_task");
 const QString ProtocolCommunication::___CMD_ADD_USER_TASK = QString("add_user_task");
 const QString ProtocolCommunication::___CMD_GET_MEDIA_FOR_PLANT_ALL = QString("get_media_for_plant_all");
@@ -21,7 +22,10 @@ const QString ProtocolCommunication::___CMD_GET_LOG_FOR_USER = QString("get_log_
 const QString ProtocolCommunication::___CMD_GET_LOG_FOR_PLANT = QString("get_log_for_plant");
 const QString ProtocolCommunication::___CMD_ADD_LOG = QString("add_log");
 const QString ProtocolCommunication::___CMD_GET_ACHIVEMENTS_USER = QString("get_achivements_user");
+const QString ProtocolCommunication::___CMD_GET_ALL_DATA_ACHIVEMENTS_USER = QString("get_all_data_achivements_user");
 const QString ProtocolCommunication::___CMD_GET_INFO_ABOUT_ACHIVEMENT = QString("get_info_achivements");
+const QString ProtocolCommunication::___CMD_SET_STAGE_PLANT = QString("set_stage_plant");
+const QString ProtocolCommunication::___CMD_SET_STATUS_PLANT = QString("set_status_plant");
 const QString ProtocolCommunication::___LOGIN = QString("login");
 const QString ProtocolCommunication::___PASSWORD = QString("password");
 const QString ProtocolCommunication::___STATUS = QString("status");
@@ -39,6 +43,12 @@ const QString ProtocolCommunication::___INST_ID = QString("inst_id");
 const QString ProtocolCommunication::___DESCRIPTION = QString("description");
 const QString ProtocolCommunication::___STAGE_PLANT = QString("stage_plant");
 const QString ProtocolCommunication::___TYPE_GROUND = QString("type_ground");
+const QString ProtocolCommunication::___STATUS_PLANT = QString("status_plant");
+const QString ProtocolCommunication::___ARRAY_DATA = QString("array_data");
+const QString ProtocolCommunication::___TYPE_ACTION = QString("type_action");
+const QString ProtocolCommunication::___AIM = QString("aim");
+const QString ProtocolCommunication::___PROGRESS = QString("progress");
+const QString ProtocolCommunication::___DATA = QString("data");
 
 QString ProtocolCommunication::ByteArrayToString(QByteArray array)
 {

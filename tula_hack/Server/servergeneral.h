@@ -6,7 +6,9 @@
 #include <QFile>
 #include <QSslKey>
 #include <QWebSocket>
+#include <QJsonArray>
 #include <../protocolcommunication.h>
+#include "../../SuperServer/servercontroller.h"
 
 struct DataClientOnline
 {
@@ -29,6 +31,9 @@ private slots:
     void onSslErrors(const QList<QSslError> &errors);
 
 private:
+
+    ServerController* controllerDB;
+
     const quint16 PORT_LISTENER = 1234;
     QWebSocketServer *webSocketServer;
     QVector<DataClientOnline> clientsOnline;
@@ -52,6 +57,7 @@ private:
     void handlerGetDescriptionFromGlossary(QJsonObject* object, DataClientOnline *client);
     void handlerGetCareInfoFromGlossary(QJsonObject* object, DataClientOnline *client);
     void handlerGetAvatarFromGlossary(QJsonObject* object, DataClientOnline *client);
+    void handlerGetAllDataFromGlossary(QJsonObject* object, DataClientOnline *client);
 
     void handlerGetUserTask(QJsonObject* object, DataClientOnline *client);
     void handlerAddUserTask(QJsonObject* object, DataClientOnline *client);
@@ -66,8 +72,10 @@ private:
 
     void handlerGetAchivementsUser(QJsonObject* object, DataClientOnline *client);
     void handlerGetInfoAboutAchivement(QJsonObject* object, DataClientOnline *client);
+    void handlerGetAllDataAchivementsUser(QJsonObject* object, DataClientOnline *client);
 
-
+    void handlerSetStatusPlant(QJsonObject* object, DataClientOnline *client);
+    void handlerSetStagePlant(QJsonObject* object, DataClientOnline *client);
 
 
 signals:

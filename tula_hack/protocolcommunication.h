@@ -29,6 +29,7 @@ public:
     const static QString ___CMD_GET_DESCRIPTION_FROM_GLOSSARY;
     const static QString ___CMD_GET_CARE_INFO_FROM_GLOSSARY;
     const static QString ___CMD_GET_AVATAR_FROM_GLOSSARY;
+    const static QString ___CMD_GET_ALL_DATA_FROM_GLOSSARY;
     const static QString ___CMD_GET_USER_TASK;
     const static QString ___CMD_ADD_USER_TASK;
     const static QString ___CMD_GET_MEDIA_FOR_PLANT_ALL;
@@ -39,7 +40,10 @@ public:
     const static QString ___CMD_GET_LOG_FOR_PLANT;
     const static QString ___CMD_ADD_LOG;
     const static QString ___CMD_GET_ACHIVEMENTS_USER;
+    const static QString ___CMD_GET_ALL_DATA_ACHIVEMENTS_USER;
     const static QString ___CMD_GET_INFO_ABOUT_ACHIVEMENT;
+    const static QString ___CMD_SET_STAGE_PLANT;
+    const static QString ___CMD_SET_STATUS_PLANT;
     //~~~~~commands end~~~~~~~
 
     const static QString ___LOGIN;
@@ -57,6 +61,12 @@ public:
     const static QString ___DESCRIPTION;
     const static QString ___STAGE_PLANT;
     const static QString ___TYPE_GROUND;
+    const static QString ___STATUS_PLANT;
+    const static QString ___ARRAY_DATA;
+    const static QString ___TYPE_ACTION;
+    const static QString ___AIM;
+    const static QString ___PROGRESS;
+    const static QString ___DATA;
 
     //~~~~~status start~~~~~
     const static QString ___STS_DONE;

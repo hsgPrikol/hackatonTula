@@ -13,8 +13,8 @@ public:
  QDateTime dateTime;
 
     LogPlant();
-    LogPlant( int _id, int _inst_id,QString _action,QDateTime _dateTime):
-        id (_id), inst_id (_inst_id),action (_action),dateTime (_dateTime) {};
+    LogPlant( int _id, int _inst_id, QString _action, int _action_id, QDateTime _dateTime):
+        id (_id), inst_id (_inst_id),action (_action), action_id(_action_id), dateTime (_dateTime) {};
     LogPlant(int _inst_id, int _action_id):
         id (-1), inst_id (_inst_id),action_id (_action_id),dateTime (QDateTime::currentDateTime()) {};
 };
