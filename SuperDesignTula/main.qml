@@ -47,6 +47,13 @@ color: "black"
         }
     }
 
+    Component{
+        id: taskPlant
+        TaskPlant{
+
+        }
+    }
+
     Loader{
         id: loader
 

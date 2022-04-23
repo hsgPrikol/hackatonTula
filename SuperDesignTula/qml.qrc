@@ -18,5 +18,8 @@
         <file>picture/water.png</file>
         <file>picture/light.png</file>
         <file>picture/temperature.png</file>
+        <file>PlantButton.qml</file>
+        <file>TaskPlant.qml</file>
+        <file>picture/wind.png</file>
     </qresource>
 </RCC>
