@@ -6,7 +6,19 @@ Item {
     width: 506
     height: 900
     property string icon_path: "qrc:/picture/strawberry.tif"
+    Rectangle{
+        anchors.fill: parent
+        width: parent.width
+        height: parent.height
+        color: "black"
 
+        Image {
+            id: mainPhone
+            anchors.fill: parent
+            source: "qrc:/picture/phone.jpg"
+            opacity: customOpacity
+        }
+    }
     Rectangle{
         id: header
         width: parent.width

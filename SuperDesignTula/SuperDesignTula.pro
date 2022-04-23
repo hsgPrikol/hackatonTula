@@ -1,4 +1,4 @@
-QT += quick sql
+QT += quick sql multimedia multimediawidgets
 
 CONFIG += c++11
 

@@ -17,6 +17,13 @@ color: "#3fae51"
 
 
 
+    Component{
+        id: cameraNeuronComponent
+
+        Cameraneuron{
+
+        }
+    }
 
 
     Component{
@@ -92,7 +99,7 @@ color: "#3fae51"
     }
 
     Component{
-        id: articles
+        id: articlesComponent
         Articles{
 
         }
@@ -127,6 +134,14 @@ color: "#3fae51"
 //        sourceComponent: plantcreator
 //        sourceComponent: plantElement
         sourceComponent: plannerComponent
+
+
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+        //должно быть!
+//        sourceComponent: plannerComponent
     }
 
     Burgermenu{

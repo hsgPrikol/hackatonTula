@@ -73,5 +73,6 @@
         <file>picture/Ежедневник.png</file>
         <file>picture/Лента.png</file>
         <file>picture/Форум.png</file>
+        <file>Cameraneuron.qml</file>
     </qresource>
 </RCC>

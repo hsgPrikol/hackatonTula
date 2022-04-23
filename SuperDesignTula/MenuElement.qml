@@ -49,7 +49,7 @@ Rectangle{
 
     function lenta()
     {
-//        loader.sourceComponent =
+        loader.sourceComponent = articlesComponent
         burgermenu.closeNavDrawer()
        console.log("lenta")
     }

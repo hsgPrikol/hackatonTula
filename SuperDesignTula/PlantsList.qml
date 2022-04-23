@@ -220,56 +220,56 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: addNewDialogMask
-        x: 434
-        y: 828
-        visible: createChatType == "group_chat" && counter > 0
-        width: 72
-        height: 72
+//    Rectangle {
+//        id: addNewDialogMask
+//        x: 434
+//        y: 828
+//        visible: createChatType == "group_chat" && counter > 0
+//        width: 72
+//        height: 72
 
-        anchors.right: addContact.right
-        anchors.rightMargin: 15
+//        anchors.right: addContact.right
+//        anchors.rightMargin: 15
 
-        anchors.bottom: addContact.bottom
-        anchors.bottomMargin: 15
+//        anchors.bottom: addContact.bottom
+//        anchors.bottomMargin: 15
 
-        radius: addNewDialogMask.width / 7
+//        radius: addNewDialogMask.width / 7
 
-        opacity: customOpacity
+////        opacity: customOpacity
+//        color: "#ff3fae51"
+////        color: addNewDialogMouse.containsPress ? Qt.lighter(biruzoviu) : biruzoviu
 
-        color: addNewDialogMouse.containsPress ? Qt.lighter(biruzoviu) : biruzoviu
+////        Image {
+////            id: addNewDialog
+////            x: 11
+////            y: 11
+////            width: 50
+////            height: 50
+////            source: "qrc:/resourses/create chat_2.tif"
+////            fillMode: Image.PreserveAspectFit
+////        }
 
-        Image {
-            id: addNewDialog
-            x: 11
-            y: 11
-            width: 50
-            height: 50
-            source: "qrc:/resourses/create chat_2.tif"
-            fillMode: Image.PreserveAspectFit
-        }
+//        MouseArea{
+//            id: addNewDialogMouse
+//            anchors.fill: parent
 
-        MouseArea{
-            id: addNewDialogMouse
-            anchors.fill: parent
+//            onClicked: {
+//                //                    loader.sourceComponent = contactsList
+//                if(createChatType == "group_chat"){
+//                    client.createChat(logins, "Групповой чат", "", true)
+//                }
 
-            onClicked: {
-                //                    loader.sourceComponent = contactsList
-                if(createChatType == "group_chat"){
-                    client.createChat(logins, "Групповой чат", "", true)
-                }
-
-                client.getMyDialogs()
-                loader.sourceComponent = listDialog
-                //var str = "123213"
-                //testMap.createNewDialog(str)
+//                client.getMyDialogs()
+//                loader.sourceComponent = listDialog
+//                //var str = "123213"
+//                //testMap.createNewDialog(str)
 
 
-                console.log("loader.source = contactsList")
-            }
-        }
-    }
+//                console.log("loader.source = contactsList")
+//            }
+//        }
+//    }
 
 
     Component.onCompleted: {
