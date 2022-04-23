@@ -3,7 +3,7 @@ import QtQuick 2.9
 Rectangle {
     id: root
 
-    property int size: 150
+    property int size: 70
     property int lineWidth: 5
     property real value: 0
 
@@ -12,9 +12,13 @@ Rectangle {
 
     property int animationDuration: 1000
 
-    property var sourceImg
-    width: 200
-    height: 200
+    property string namePlant: "namePlant"
+
+    property string valueProgress: "valueProgress"
+
+    property string sourceImg: "qrc:/achivments/Неизвестное.png"
+    width: 120
+    height: 120
 
     color: "#00000000"
 
@@ -24,11 +28,12 @@ Rectangle {
 
     Rectangle {
         id: rectangle
-        x: 30
-        y: 27
-        width: 150
-        height: 150
-        color: "#ffffff"
+        x: 0
+        y: 0
+        width: size
+        height: size
+        color: "#00000000"
+        clip: false
 
         Canvas {
             id: canvas
@@ -37,6 +42,10 @@ Rectangle {
 
 
             anchors.fill: parent
+            anchors.rightMargin: -50
+            anchors.bottomMargin: -29
+            anchors.leftMargin: 0
+            anchors.topMargin: 0
             antialiasing: true
 
             onDegreeChanged: {
@@ -70,10 +79,14 @@ Rectangle {
                 ctx.stroke();
             }
 
-            Image {
-                anchors.centerIn: parent
-                source: "sourceImg"
-            }
+//            Image {
+//                width: 82
+//                height: 74
+//                anchors.centerIn: parent
+//                source: sourceImg
+//                anchors.verticalCenterOffset: 10
+//                anchors.horizontalCenterOffset: 0
+//            }
 
             Behavior on degree {
                 NumberAnimation {
@@ -87,9 +100,10 @@ Rectangle {
         id: text1
         x: 0
         y: 0
-        width: 200
+        width: 120
         height: 26
-        text: qsTr("Цветковые")
+        text: namePlant
+        color: "#ffffff"
         font.pixelSize: 12
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -97,12 +111,12 @@ Rectangle {
 
     Text {
         id: text2
-        x: 1
-        y: 178
-        width: 199
+        x: 0
+        y: 98
+        width: 120
         height: 22
         color: "#ffffff"
-        text: qsTr("140/200")
+        text: valueProgress
         font.pixelSize: 12
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

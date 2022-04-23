@@ -9,6 +9,7 @@ Rectangle {
 
     width: 506
     height: 900
+    color: "#00000000"
 
     Rectangle {
         id: header
@@ -28,10 +29,10 @@ Rectangle {
 
             Image {
                 id: arrow
-                x: 0
-                y: 0
-                width: 70
-                height: 70
+                x: 13
+                y: 20
+                width: 44
+                height: 31
                 source: "picture/arrow.tif"
                 fillMode: Image.PreserveAspectFit
             }
@@ -60,127 +61,60 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: photo
+    ScrollView {
+        id: scrollView
         x: 0
-        y: 71
+        y: 69
         width: 506
-        height: 314
-        color: "#ffffff"
+        height: 831
+        contentHeight: 1000
+        contentWidth: parent.width
+        clip: true
 
-        Image {
-            id: image
-            x: 0
-            y: 0
-            width: 506
-            height: 314
-            source: "qrc:/qtquickplugin/images/template_image.png"
-            fillMode: Image.PreserveAspectFit
-        }
-    }
-
-    Rectangle {
-        id: achivments
-        x: 0
-        y: 384
-        width: 506
-        height: 516
-        color: "#3fae51"
-
-        Text {
-            id: text2
-            x: 0
-            y: 0
-            width: 506
-            height: 50
-            color: "#ffffff"
-            text: qsTr("Дата регистрации\\n12.04.2022")
-            font.pixelSize: 16
-            verticalAlignment: Text.AlignTop
-
-            Text {
-                id: text3
-                x: 202
-                y: 48
-                width: 102
-                height: 20
-                color: "#ffffff"
-                text: qsTr("Уровень: 5")
-                font.pixelSize: 16
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
-
-        ProgressBar {
-            id: progressBar
-            x: 119
-            y: 69
-            width: 268
-            height: 36
-            value: 0.5
-        }
-
-        Text {
-            id: text4
-            x: 219
-            y: 106
-            width: 68
-            height: 28
-            color: "#ffffff"
-            text: qsTr("270/350")
-            font.pixelSize: 16
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
-
-
-
-        Rectangle {
-            id: hatAccountMask
-            height: 50
-            color: "#00000000"
-
-
-            property var nameText: "Аккаунт"
-            x: 0
-            y: 140
-            width: 506
-            Text {
-
-                x: 191
-                y: 0
-                width: 125
-                height: 50
-                color: "#ffffff"
-                text: "Найденные растения"
-                font.pixelSize: 18
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
+        Column {
+            id: column
+            width: 200
+            height: 400
 
             Rectangle {
-
-                x: 8
-                y: 24
-                width: 142
-                height: 2
+                id: photo
+                width: 506
+                height: 314
                 color: "#ffffff"
+
+                Image {
+                    id: image
+                    x: 0
+                    y: 0
+                    width: 506
+                    height: 314
+                    source: "qrc:/qtquickplugin/images/template_image.png"
+                    fillMode: Image.PreserveAspectFit
+                }
             }
 
-            Rectangle {
+            Achivments {
+                id: achivments
 
-                x: 348
-                y: 24
-                width: 151
-                height: 2
-                color: "#ffffff"
             }
+
         }
+
     }
+
+
+
+
+
 
 
 
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}
+}
+##^##*/

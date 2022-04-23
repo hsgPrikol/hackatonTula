@@ -23,6 +23,23 @@ color: "#3fae51"
     }
 
     Component{
+        id: profileAchivmentComponent
+
+        ProfileAchivments{
+
+        }
+    }
+
+    Component{
+        id: plantsListComponent
+
+        PlantsList{
+
+        }
+    }
+
+
+    Component{
         id: myGryadkiComponent
 
         MyGryadki{
@@ -63,11 +80,19 @@ color: "#3fae51"
         }
     }
 
+    Component{
+        id: achivmentsComponent
+
+        Achivments{
+
+        }
+    }
+
     Loader{
         id: loader
 
 //        sourceComponent: plantElement
-        sourceComponent: cirkleProgressBar
+        sourceComponent: plantsListComponent
     }
 
     Burgermenu{

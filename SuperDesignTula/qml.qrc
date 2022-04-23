@@ -35,5 +35,24 @@
         <file>picture/StartAudio.tif</file>
         <file>Cirkleprogressbar.qml</file>
         <file>ProfileAchivments.qml</file>
+        <file>Achivments.qml</file>
+        <file>achivments/cactus.png</file>
+        <file>achivments/clock.png</file>
+        <file>achivments/cyberMandarin.png</file>
+        <file>achivments/dictinary.png</file>
+        <file>achivments/diedPlant.png</file>
+        <file>achivments/fine.png</file>
+        <file>achivments/level.png</file>
+        <file>achivments/lights.png</file>
+        <file>achivments/photo.png</file>
+        <file>achivments/rost.png</file>
+        <file>achivments/temperature.png</file>
+        <file>achivments/water.png</file>
+        <file>achivments/Голосеменные.png</file>
+        <file>achivments/Неизвестное.png</file>
+        <file>achivments/Цветковые.png</file>
+        <file>PlantProfile.qml</file>
+        <file>PlantsChar.qml</file>
+        <file>PlantsList.qml</file>
     </qresource>
 </RCC>
