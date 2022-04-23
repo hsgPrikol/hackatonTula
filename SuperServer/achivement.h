@@ -3,9 +3,24 @@
 
 #include <instruments.h>
 
+enum actionAchivement
+{
+    addPlant,
+    waterTheFlower,
+    fertilizeTheFlower,
+    findTheFlower,
+    addMedia,
+    compleatedMedia,
+    addFarmerTask,
+    removeFarmerTask,
+    addLog
+};
+
 class Achivement
 {
 public:
+    static QMap<actionAchivement, QVector<int>>* mapAchivement;
+
     int id;
     QString name;
     QString info;

@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
     auto a6=controller->getFarmerPlant(1);
     auto a7=controller->getAlFarmerPlant("maksim");
 
-    auto a8=controller->getAchivment(1,"maksim");
-    auto a9=controller->getAllAchivments("maksim");
+    auto a8=controller->getAchivement(1,"maksim");
+    auto a9=controller->getAllAchivements("maksim");
 
     auto a10=Farmer("login2", "123", "mail2@mail.ru", "Name Family", nullptr, QDate::currentDate());
     auto a11= controller->registrationUser(a10);
@@ -39,5 +39,17 @@ int main(int argc, char *argv[])
     //controller->addFarmerTask(FarmerTask("maksim","Что то сделать", QDateTime::currentDateTime().addDays(5)));
     //controller->removeFarmerTask(3,"maksim");
 
+    //controller->addMediaPlant(MediaPlant(1,"Как же он хорош",bytes));
+    //controller->removeMediaPlant(4);
+
+    //controller->addFarmerPlant(FarmerPlant("maksim",1,0,1,0,"Cаня", bytes));
+    //controller->removeFarmerPlant(3);
+
+    //controller->completeAchivement(10,"login2");
+
+    //controller->addLogPlant(LogPlant(1,1),"maksim");
+    //controller->removeLogPlant(5,1);
+
+    controller->updateFarmerPlant(FarmerPlant(2,"maksim",1,1,1,1,"Cаня", bytes));
     return a.exec();
 }

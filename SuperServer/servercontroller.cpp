@@ -183,6 +183,33 @@ QVector<MediaPlant> ServerController::getAllMediaPlant(int id)
     return mediasPlant;
 }
 
+int ServerController::addMediaPlant(MediaPlant mediaPlant, QString login)
+{
+    auto str = QString("INSERT INTO  media_plant (inst_id, description, image)"
+                  " VALUES ('%0','%1','%2');")
+            .arg(mediaPlant.inst_id)
+            .arg(mediaPlant.description)
+            .arg(QString(mediaPlant.image));
+
+    QSqlQuery query = QSqlQuery(str);
+    //query.exec();
+
+    checkAchivement(login,actionAchivement::addMedia);
+
+    return 0;
+}
+
+int ServerController::removeMediaPlant(int id_mediaPlant)
+{
+    auto str = QString("DELETE FROM media_plant WHERE id = %0;")
+            .arg(id_mediaPlant);
+
+    QSqlQuery query = QSqlQuery(str);
+    query.exec();
+
+    return 0;
+}
+
 QString ServerController::getActionType(int id_action)
 {
     auto str = QString("SELECT name FROM action_type WHERE id = %0;").arg(id_action);
@@ -221,6 +248,36 @@ QVector<LogPlant> ServerController::getAllLogPlant(int id_plant)
     return logs;
 }
 
+int ServerController::addLogPlant(LogPlant logPlant, QString login)
+{
+    int newId=getLastId("log","id", QString("WHERE inst_id = '%0'").arg(logPlant.inst_id))+1;
+
+    auto str = QString("INSERT INTO  log (id, inst_id, id_action)"
+                  " VALUES ('%0', %1, %2);")
+            .arg(newId)
+            .arg(logPlant.inst_id)
+            .arg(logPlant.action_id);
+
+    QSqlQuery query(str);
+    query.exec();
+
+    checkAchivement(login,actionAchivement::addLog);
+
+    return 0;
+}
+
+int ServerController::removeLogPlant(int id_log, int id_plant)
+{
+    auto str = QString("DELETE FROM log WHERE id = %0 AND inst_id = %1;")
+            .arg(id_log)
+            .arg(id_plant);
+
+    QSqlQuery query = QSqlQuery(str);
+    query.exec();
+
+    return 0;
+}
+
 FarmerPlant *ServerController::getFarmerPlant(int id)
 {
     auto str = QString("SELECT login, plant_id, stage, created_date, type_id, status, name, avatar FROM farmer_plant WHERE inst_id = %0;").arg(id);
@@ -250,6 +307,69 @@ QVector<FarmerPlant> ServerController::getAlFarmerPlant(QString login_Famer)
     }
 
     return farmerPlants;
+}
+
+int ServerController::addFarmerPlant(FarmerPlant farmerPlant)
+{
+    auto str = QString("INSERT INTO  farmer_plant (login, plant_id, stage, type_id, status, name, avatar)"
+                  " VALUES ('%0', %1, %2, %3, %4, '%5', '%6');")
+            .arg(farmerPlant.login)
+            .arg(farmerPlant.plant_id)
+            .arg(farmerPlant.stage)
+            .arg(farmerPlant.type_id)
+            .arg(farmerPlant.status)
+            .arg(farmerPlant.name)
+            .arg(QString(farmerPlant.avatar));
+
+    QSqlQuery query = QSqlQuery(str);
+    //query.exec();
+
+    checkAchivement(farmerPlant.login,actionAchivement::addPlant);
+
+    return 0;
+}
+
+int ServerController::updateFarmerPlant(FarmerPlant farmerPlant)
+{
+    auto str = QString("UPDATE farmer_plant "
+                            "SET stage = %0, type_id = %1, status = %2, name = '%3', avatar = '%4' "
+                            "WHERE inst_id = %5;")
+            .arg(farmerPlant.stage)
+            .arg(farmerPlant.type_id)
+            .arg(farmerPlant.status)
+            .arg(farmerPlant.name)
+            .arg(QString(farmerPlant.avatar))
+            .arg(farmerPlant.inst_id);
+
+    QSqlQuery query(str);
+    query.exec();
+
+    //checkAchivement(farmerPlant.login,actionAchivement::addPlant);
+
+    return 0;
+}
+
+int ServerController::removeFarmerPlant(int id_plant)
+{
+    auto str = QString("DELETE FROM farmer_plant WHERE inst_id = %0;")
+            .arg(id_plant);
+
+    QSqlQuery query = QSqlQuery(str);
+    query.exec();
+
+    str = QString("DELETE FROM log WHERE inst_id = %0;")
+            .arg(id_plant);
+
+    query = QSqlQuery(str);
+    query.exec();
+
+    str = QString("DELETE FROM media_plant WHERE inst_id = %0;")
+            .arg(id_plant);
+
+    query = QSqlQuery(str);
+    query.exec();
+
+    return 0;
 }
 
 FarmerTask *ServerController::getFarmerTask(int id_task, QString login)
@@ -294,6 +414,8 @@ int ServerController::addFarmerTask(FarmerTask task)
     QSqlQuery query = QSqlQuery(str);
     query.exec();
 
+    checkAchivement(task.login,actionAchivement::addFarmerTask);
+
     return 0;
 }
 
@@ -306,10 +428,12 @@ int ServerController::removeFarmerTask(int id_task, QString login)
     QSqlQuery query = QSqlQuery(str);
     query.exec();
 
+    checkAchivement(login,actionAchivement::removeFarmerTask);
+
     return 0;
 }
 
-Achivement *ServerController::getAchivment(int id_ach, QString login_Farmer)
+Achivement *ServerController::getAchivement(int id_ach, QString login_Farmer)
 {
     auto str = QString("SELECT name, info, aim, status, image FROM user_achivements "
                             "JOIN achivements ON id_achivement=id "
@@ -322,7 +446,7 @@ Achivement *ServerController::getAchivment(int id_ach, QString login_Farmer)
     return ach;
 }
 
-QVector<Achivement> ServerController::getAllAchivments(QString login_Farmer)
+QVector<Achivement> ServerController::getAllAchivements(QString login_Farmer)
 {
     auto str = QString("SELECT id_achivement FROM user_achivements WHERE login = '%0';").arg(login_Farmer);
     QSqlQuery query(str);
@@ -332,14 +456,14 @@ QVector<Achivement> ServerController::getAllAchivments(QString login_Farmer)
     while(query.next())
     {
         int achivement_id = ivalue(0);
-        Achivement* achivement=getAchivment(achivement_id, login_Farmer);
+        Achivement* achivement=getAchivement(achivement_id, login_Farmer);
         achivements.append(*achivement);
     }
 
     return achivements;
 }
 
-int ServerController::addAchivment(Achivement achivement)
+int ServerController::addAchivement(Achivement achivement)
 {
     auto str = QString("INSERT INTO achivements (info, aim, name, image) VALUES ('%0', %1, '%2', '%3');")
             .arg(achivement.info)
@@ -364,6 +488,33 @@ int ServerController::addAchivment(Achivement achivement)
                 .arg(achivement.aim);
         QSqlQuery queryAc = QSqlQuery(str);
         queryAc.exec();
+    }
+
+    return 0;
+}
+
+int ServerController::completeAchivement(int id_ach, QString login)
+{
+    auto str = QString("UPDATE user_achivements SET status = %2 WHERE id_achivement = %0 AND login = '%1';")
+            .arg(id_ach)
+            .arg(login)
+            .arg(0);
+
+    QSqlQuery queryAc(str);
+    queryAc.exec();
+}
+
+int ServerController::checkAchivement(QString login, actionAchivement action)
+{
+    QVector<int> ids = Achivement::mapAchivement->value(action);
+
+    foreach(int id, ids){
+        auto str = QString("UPDATE user_achivements SET status = status - 1 WHERE id_achivement = %0 AND login = '%1';")
+                .arg(id)
+                .arg(login);
+
+        QSqlQuery queryAc = QSqlQuery(str);
+        //queryAc.exec();
     }
 
     return 0;

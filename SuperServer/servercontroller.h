@@ -42,18 +42,23 @@ public:
 
     ///Получиь растение из глоссария по id
     Plant* getPlant(int id);
-    ///Получиь ВСЕ растения из глоссария
+    ///Получить ВСЕ растения из глоссария
     QVector<Plant> getAllPlant();
 
-    //-----------------------РАСТЕНИЯ ФЕРМЕРА-------------------------------------------
-
-    ///Получить тип грунта
-    QString getTypePlant(int id);
+    //-----------------------ЗАМЕТКИ РАСТЕНИЙ-------------------------------------------
 
     ///Получить заметки фермера для растения по id медиа
     MediaPlant* getMediaPlant(int id_media);
     ///Получить ВСЕ заметки фермера для id растения
     QVector<MediaPlant> getAllMediaPlant(int id);
+
+    ///Добавить заметку
+    int addMediaPlant(MediaPlant mediaPlant, QString login);
+
+    ///Удалить заметку
+    int removeMediaPlant(int id_mediaPlant);
+
+    //-----------------------ЛОГИ РАСТЕНИЙ-------------------------------------------
 
     ///Получить название лога по id лога
     QString getActionType(int id_action);
@@ -62,10 +67,30 @@ public:
     ///Получить ВСЕ логи по id цветка
     QVector<LogPlant> getAllLogPlant(int id_plant);
 
+    ///Добавить лог
+    int addLogPlant(LogPlant logPlant, QString login);
+
+    ///Удалить лог
+    int removeLogPlant(int id_lo, int id_plant);
+
+    //-----------------------РАСТЕНИЯ ФЕРМЕРА-------------------------------------------
+
+    ///Получить тип грунта
+    QString getTypePlant(int id);
+
     ///Получить растения фермера по id растения
     FarmerPlant* getFarmerPlant(int id);
     ///Получить ВСЕ растения фермера
     QVector<FarmerPlant> getAlFarmerPlant(QString login_Farmer);
+
+    ///Добавить растение фермера
+    int addFarmerPlant(FarmerPlant farmerPlant);
+
+    ///Обновить информацию об растение фермера
+    int updateFarmerPlant(FarmerPlant farmerPlant);
+
+    ///Удалить растение фермера
+    int removeFarmerPlant(int id_plant);
 
     //-----------------------ЗАДАЧИ ФЕРМЕРА-------------------------------------------
 
@@ -83,12 +108,18 @@ public:
     //---------------------------АЧИВКИ---------------------------------------
 
     ///Получить ачивку и прогресс для пользователя по id ачивки
-    Achivement* getAchivment(int id_ach, QString login_Farmer);
+    Achivement* getAchivement(int id_ach, QString login_Farmer);
     ///Получить прогресс ВСЕХ ачивок для пользователя
-    QVector<Achivement> getAllAchivments(QString login_Farmer);
+    QVector<Achivement> getAllAchivements(QString login_Farmer);
 
     ///Добавить ачивку
-    int addAchivment(Achivement achivement);
+    int addAchivement(Achivement achivement);
+
+    ///Выполнить ачивку
+    int completeAchivement(int id_ach, QString login);
+
+    ///Событие выполнение какого либо действия и выполнения ачивка
+    int checkAchivement(QString login, actionAchivement action);
 
 };
 
