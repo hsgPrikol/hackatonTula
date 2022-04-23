@@ -24,7 +24,6 @@ Rectangle{
         }
     }
 
-
     function unLoginAccount()
     {
         close()
@@ -54,7 +53,6 @@ Rectangle{
     property var textHelpArray: ["Выход", "Поддержка", "О разработчике"]
     property var colorHelpArray: ["#FA7E61", "#ffffff"]
     property int sizeFont: 20
-
 
     width: dfltWidthElementMenu
     height: sizeHelpHeight

@@ -7,40 +7,48 @@ import QtGraphicalEffects 1.0
 Rectangle{
     id: root
 
-    function createChat()
+    function myGryadki()
     {
-        createChatType = "just_chat"
-        loader.sourceComponent = contactsList
-        navDrawer.closeNavDrawer()
-        console.log("createChat")
+//        createChatType = "just_chat"
+
+        loader.sourceComponent = myGryadkiComponent;
+
+        burgermenu.closeNavDrawer();
+//        navDrawer.closeNavDrawer()
+        console.log("myGryadki")
     }
 
-    function createGroup()
+    function glossariy()
     {
         createChatType = "group_chat"
         loader.sourceComponent = contactsList
         navDrawer.closeNavDrawer()
-        console.log("createGroup")
+        console.log("glossariy")
     }
 
-    function createPrivateChat()
+    function calendar()
     {
         createChatType = "private_chat"
         loader.sourceComponent = contactsList
         navDrawer.closeNavDrawer()
-        console.log("createPrivateGroup")
+        console.log("calendar")
     }
 
-    function listContacts()
+    function achivments()
     {
         createChatType = "non_chat"
         loader.sourceComponent = contactsList
         navDrawer.closeNavDrawer()
-        console.log("listContacts")
+        console.log("achivments")
+    }
+
+    function forum()
+    {
+        console.log("forum")
     }
 
 
-    property var functionMenuElementArray: [createChat, createGroup,createPrivateChat,listContacts]
+    property var functionMenuElementArray: [myGryadki, glossariy,calendar,achivments,forum]
 
     property int fontSize: 20
     property int sizeHeightMenuElement: 60

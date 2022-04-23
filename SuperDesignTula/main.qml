@@ -4,7 +4,7 @@ import QtQuick.Controls 2.12
 
 ApplicationWindow{
     id: root
-//    visibility: ApplicationWindow.FullScreen
+    //    visibility: ApplicationWindow.FullScreen
 
     width: 506
     height: 900
@@ -19,6 +19,14 @@ ApplicationWindow{
 
         SettingsProfile{
             id: settingsProfile
+        }
+    }
+
+    Component{
+        id: myGryadkiComponent
+
+        MyGryadki{
+            id: myGryadki
         }
     }
 
@@ -42,14 +50,11 @@ ApplicationWindow{
     Loader{
         id: loader
 
-        sourceComponent: burgermenuComponent
+        sourceComponent: myGryadkiComponent
     }
 
-    Component{
-        id: burgermenuComponent
-
-        Burgermenu{
-            id: burgermenu
-        }
+    Burgermenu{
+        id: burgermenu
+        x: -506
     }
 }

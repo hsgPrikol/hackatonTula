@@ -18,5 +18,13 @@
         <file>picture/Glossariy.png</file>
         <file>picture/Mygryadki.png</file>
         <file>HelpMenu.qml</file>
+        <file>MyGryadki.qml</file>
+        <file>picture/addNewPlant.png</file>
+        <file>picture/addnew.tif</file>
+        <file>picture/arrow.tif</file>
+        <file>picture/luppa.tif</file>
+        <file>picture/PauseAudio.tif</file>
+        <file>picture/ri_tochki.tif</file>
+        <file>picture/StartAudio.tif</file>
     </qresource>
 </RCC>
