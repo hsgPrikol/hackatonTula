@@ -11,5 +11,12 @@
         <file>Aboutauthors.qml</file>
         <file>Settings.qml</file>
         <file>SettingsProfile.qml</file>
+        <file>MenuElement.qml</file>
+        <file>picture/Achivments.png</file>
+        <file>picture/Calendar.png</file>
+        <file>picture/Forum.png</file>
+        <file>picture/Glossariy.png</file>
+        <file>picture/Mygryadki.png</file>
+        <file>HelpMenu.qml</file>
     </qresource>
 </RCC>

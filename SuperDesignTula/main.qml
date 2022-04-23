@@ -42,7 +42,7 @@ ApplicationWindow{
     Loader{
         id: loader
 
-        sourceComponent: autorizationComponent
+        sourceComponent: burgermenuComponent
     }
 
     Component{

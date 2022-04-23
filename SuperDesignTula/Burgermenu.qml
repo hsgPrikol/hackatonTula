@@ -33,7 +33,7 @@ Rectangle {
 
 
     color: noColor
-//    opacity: 0.3
+    //    opacity: 0.3
 
     property var textArray: ["Создать чат", "Создать группу", "Создать приватный чат", "Контакты"]
     property var pictureArray: ["qrc:/resourses/create chat_2.tif", "qrc:/resourses/shtorka/plusplus.tif", "qrc:/resourses/shtorka/zakochek.tif", "qrc:/resourses/shtorka/contakti.tif"]
@@ -204,24 +204,24 @@ Rectangle {
             spacing: 5
 
 
-//            Repeater{
-//                id: repMenu
-//                anchors.fill: parent
+            Repeater{
+                id: repMenu
+                anchors.fill: parent
 
-//                model: 4
+                model: 5
 
-//                property int sizeHeightMenuElement: 60
-////                MenuElement {
+                property int sizeHeightMenuElement: 60
+                MenuElement {
 
 
-////                }
-//            }
+                }
+            }
         }
 
         Rectangle {
             id: lineCuka1
             x: 35
-            y: 354
+            y: 409
             width: 267
             height: 1
             color: "#ffffff"
@@ -247,16 +247,17 @@ Rectangle {
             width: parent.width
             height: repHelp.model * (helpColumn.spacing + repHelp.height)
 
-//            Repeater{
-//                id: repHelp
-//                anchors.fill: parent
-//                model: 3
+            Repeater{
+                id: repHelp
+                anchors.fill: parent
+                model: 3
 
-//                property int sizeHelpHeight: 60
-////                HelpMenu {
+                property int sizeHelpHeight: 60
 
-////                }
-//            }
+                HelpMenu{
+
+                }
+            }
         }
     }
 
@@ -278,9 +279,9 @@ Rectangle {
         }
     }
 
-//    Component.onCompleted: {
-//        openNavDrawer.start()
-//    }
+    //    Component.onCompleted: {
+    //        openNavDrawer.start()
+    //    }
 }
 
 
