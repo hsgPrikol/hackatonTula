@@ -11,5 +11,7 @@
         <file>Aboutauthors.qml</file>
         <file>Settings.qml</file>
         <file>SettingsProfile.qml</file>
+        <file>PlantElement.qml</file>
+        <file>picture/strawberry.png</file>
     </qresource>
 </RCC>
