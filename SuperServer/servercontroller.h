@@ -8,7 +8,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
-#include <instruments.h>
+#include "instruments.h"
 #include "farmer.h"
 #include "plant.h"
 #include "farmerplant.h"

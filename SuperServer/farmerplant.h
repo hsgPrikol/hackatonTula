@@ -1,7 +1,7 @@
 #ifndef FARMERPLANT_H
 #define FARMERPLANT_H
 
-#include <instruments.h>
+#include "instruments.h"
 #include "mediaplant.h"
 #include "logplant.h"
 

@@ -1,7 +1,7 @@
 #ifndef LOGPLANT_H
 #define LOGPLANT_H
 
-#include <instruments.h>
+#include "instruments.h"
 
 class LogPlant
 {

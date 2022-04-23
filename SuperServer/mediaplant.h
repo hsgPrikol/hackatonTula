@@ -1,7 +1,7 @@
 #ifndef MEDIAPLANT_H
 #define MEDIAPLANT_H
 
-#include <instruments.h>
+#include "instruments.h"
 
 class MediaPlant
 {
