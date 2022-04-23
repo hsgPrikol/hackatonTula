@@ -30,5 +30,8 @@
         <file>picture/weather.png</file>
         <file>picture/wet.png</file>
         <file>Articles.qml</file>
+        <file>PlantCreator.qml</file>
+        <file>picture/strawberry.tif</file>
+        <file>picture/strawberry.svg</file>
     </qresource>
 </RCC>

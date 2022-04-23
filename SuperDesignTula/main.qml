@@ -68,10 +68,17 @@ color: "black"
         }
     }
 
+    Component{
+        id: plantcreator
+        PlantCreator{
+
+        }
+    }
+
     Loader{
         id: loader
 
-        sourceComponent: articles
+        sourceComponent: plantcreator
     }
 
     Component{
