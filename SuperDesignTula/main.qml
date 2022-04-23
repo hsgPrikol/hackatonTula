@@ -12,7 +12,7 @@ ApplicationWindow{
     title: qsTr("Hello World")
 
 
-
+color: "black"
 
     Component{
         id: settingsComponent
@@ -47,9 +47,18 @@ ApplicationWindow{
         }
     }
 
+    Component{
+        id: plantElement
+
+        PlantElement{
+
+        }
+    }
+
     Loader{
         id: loader
 
+        sourceComponent: plantElement
         sourceComponent: myGryadkiComponent
     }
 
