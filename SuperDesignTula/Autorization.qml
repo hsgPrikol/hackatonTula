@@ -209,7 +209,7 @@ Rectangle {
         y: 474
         width: 103
         height: 40
-        color: "#3fae51"
+        color: mouseArea.containsPress ? "#3fae51" : "pink"
         radius: input.height / 4
         opacity: customOpacity
 
@@ -225,7 +225,10 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
-            hoverEnabled: true
+            //hoverEnabled: true
+
+
+
         }
     }
 }
