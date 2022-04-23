@@ -11,7 +11,12 @@
         <file>Aboutauthors.qml</file>
         <file>Settings.qml</file>
         <file>SettingsProfile.qml</file>
-        <file>PlantElement.qml</file>
+        <file>UselessPlantElement.qml</file>
         <file>picture/strawberry.png</file>
+        <file>picture/harvest.png</file>
+        <file>PlantElement.qml</file>
+        <file>picture/water.png</file>
+        <file>picture/light.png</file>
+        <file>picture/temperature.png</file>
     </qresource>
 </RCC>
