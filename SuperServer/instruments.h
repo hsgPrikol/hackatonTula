@@ -7,6 +7,7 @@
 #include <QDate>
 #include <QDateTime>
 #include <QDebug>
+#include <QFile>
 
 class Instruments
 {

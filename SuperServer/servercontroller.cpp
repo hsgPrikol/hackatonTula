@@ -9,9 +9,21 @@ ServerController::ServerController()
 
 bool ServerController::startServer()
 {
+    QVector<QString> paths({
+                               "C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase",
+                               "C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase",
+                               "C:/Users/Administrator/Desktop/SuperDataBase"
+                           });
+
     db = QSqlDatabase::addDatabase("QSQLITE");
-    //    db.setDatabaseName("C:/Users/Tihon/Desktop/sqlitestudio-3.3.3/SQLiteStudio/SuperDataBase");
-    db.setDatabaseName("C:/Users/Rota5/Documents/cyberpark2022/SuperDataBase");
+
+    foreach(QString p, paths){
+        if(QFile::exists(p)){
+            db.setDatabaseName(p);
+        }
+    }
+
+
     if(db.open()){
         return true;
     } else {

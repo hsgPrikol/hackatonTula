@@ -50,6 +50,6 @@ int main(int argc, char *argv[])
     //controller->addLogPlant(LogPlant(1,1),"maksim");
     //controller->removeLogPlant(5,1);
 
-    controller->updateFarmerPlant(FarmerPlant(2,"maksim",1,1,1,1,"Cаня", bytes));
+    //controller->updateFarmerPlant(FarmerPlant(2,"maksim",1,1,1,1,"Cаня", bytes));
     return a.exec();
 }
