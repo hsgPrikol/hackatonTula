@@ -17,7 +17,7 @@ Rectangle {
 
     property int fontSize: 14
     property var tmpContactsChar
-    property string chat_title: "Контакты"
+    property string chat_title: "Глоссарий"
 
     property int counter: 0
     property var logins: []
@@ -32,12 +32,12 @@ Rectangle {
     property var testAG: [testA, testG, testW]
 
 
-//    ConfidenceWidget{
-//        id: confidence
-//        onClicked: {
-//            confidence.show()
-//        }
-//    }
+    //    ConfidenceWidget{
+    //        id: confidence
+    //        onClicked: {
+    //            confidence.show()
+    //        }
+    //    }
 
     width: dfltWidth
     height: dfltHeight
@@ -113,19 +113,20 @@ Rectangle {
 
                 Image {
                     id: image
-                    x: 8
-                    y: 0
-                    width: 40
-                    height: 60
-                    source: "qrc:/resourses/chat/nazad_strelochka.tif"
+                    x: 40
+                    y: 14
+                    width: 38
+                    height: 32
+                    source: "qrc:/picture/arrow.tif"
                     fillMode: Image.PreserveAspectFit
-                }
 
-                MouseArea{
-                    anchors.fill: parent
 
-                    onClicked: {
-                        loader.sourceComponent = listDialog
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            loader.sourceComponent = plannerComponent
+                        }
                     }
                 }
             }
@@ -199,15 +200,15 @@ Rectangle {
 
                 Column{
                     id: columnContact
-//                    anchors.fill: parent
-//                    width: parent.width
-//                    height: parent.height
+                    //                    anchors.fill: parent
+                    //                    width: parent.width
+                    //                    height: parent.height
                     spacing: 10
 
                     Repeater{
                         model: testChar.length
                         PlantsChar{
-//                            border.color: "red"
+                            //                            border.color: "red"
 
                             textRepeaterChar: testChar[index]
                             indexRepeaterChar: index
@@ -279,6 +280,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}
+    D{i:0;formeditorZoom:1.25}
 }
 ##^##*/

@@ -208,7 +208,7 @@ Rectangle {
                 id: repMenu
                 anchors.fill: parent
 
-                model: 5
+                model: 6
 
                 property int sizeHeightMenuElement: 60
                 MenuElement {
@@ -221,7 +221,7 @@ Rectangle {
         Rectangle {
             id: lineCuka1
             x: 35
-            y: 409
+            y: 477
             width: 267
             height: 1
             color: "#ffffff"

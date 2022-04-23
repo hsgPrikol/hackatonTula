@@ -9,7 +9,7 @@ Rectangle{
 
     function myGryadki()
     {
-//        createChatType = "just_chat"
+
 
         loader.sourceComponent = myGryadkiComponent;
 
@@ -20,43 +20,50 @@ Rectangle{
 
     function glossariy()
     {
-        createChatType = "group_chat"
-        loader.sourceComponent = contactsList
-        navDrawer.closeNavDrawer()
+        dateLeft.setIsFromGoto(false)
+        loader.sourceComponent = plantsListComponent
+        burgermenu.closeNavDrawer();
         console.log("glossariy")
     }
 
-    function calendar()
+    function everyDay()
     {
-        createChatType = "private_chat"
-        loader.sourceComponent = contactsList
-        navDrawer.closeNavDrawer()
+        loader.sourceComponent = plannerComponent
+        burgermenu.closeNavDrawer()
         console.log("calendar")
-    }
-
-    function achivments()
-    {
-        createChatType = "non_chat"
-        loader.sourceComponent = contactsList
-        navDrawer.closeNavDrawer()
-        console.log("achivments")
     }
 
     function forum()
     {
-        console.log("forum")
+//        loader.sourceComponent = contactsList
+        burgermenu.closeNavDrawer()
+        console.log("Её еще нет","forum")
     }
 
+    function cyberShop()
+    {
+//        loader.sourceComponent = contactsList
+        burgermenu.closeNavDrawer()
+        console.log("Её еще нет","cyberShop")
+    }
 
-    property var functionMenuElementArray: [myGryadki, glossariy,calendar,achivments,forum]
+    function lenta()
+    {
+//        loader.sourceComponent =
+        burgermenu.closeNavDrawer()
+       console.log("lenta")
+    }
+
+    property var functionMenuElementArray: [myGryadki, glossariy,everyDay,lenta,cyberShop,forum]
 
     property int fontSize: 20
     property int sizeHeightMenuElement: 60
     property int dfltWidthElementMenu: 337
     property color noColor: "#00000000"
 
-    property var textArray: ["Мои грядки", "Глоссарий", "Календарь", "Достижения", "Форум"]
-    property var pictureArray: ["qrc:/picture/Mygryadki.png", "qrc:/picture/Glossariy.png", "qrc:/picture/Calendar.png", "qrc:/picture/Achivments.png", "qrc:/picture/Forum.png"]
+    property var textArray: ["Мои грядки", "Глоссарий", "Ежедневник", "Лента", "Cyber-магазин", "Форум"]
+
+    property var pictureArray: ["qrc:/picture/Mygryadki.png", "qrc:/picture/Glossariy.png", "qrc:/picture/Ежедневник.png", "qrc:/picture/Лента.png", "qrc:/picture/Cyber-Shop.png", "qrc:/picture/Форум.png"]
 
 
     width: dfltWidthElementMenu

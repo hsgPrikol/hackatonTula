@@ -10,9 +10,69 @@ Item {
     Rectangle{
         id: header
         width: parent.width
-        height: 70
+        height: 60
         color: "#3FAE51"
         z: 1
+
+        Rectangle {
+            id: header1
+            width: parent.width
+            height: 60
+            color: "#3fae51"
+            Rectangle {
+                id: rectangle
+                x: 0
+                y: 0
+                width: 506
+                height: 60
+                color: "#3fae51"
+                Rectangle {
+                    id: rectangle1
+                    x: 0
+                    y: 0
+                    width: 117
+                    height: 60
+                    color: "#00000000"
+                    Image {
+                        id: arrow
+                        x: 30
+                        y: 13
+                        width: 39
+                        height: 35
+                        source: "qrc:/picture/ri_tochki.tif"
+                        fillMode: Image.PreserveAspectFit
+                        MouseArea {
+                            anchors.fill: parent
+
+                           onClicked: {
+                               burgermenu.showNavDrawer()
+                           }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle2
+                    x: 195
+                    y: 0
+                    width: 117
+                    height: 60
+                    color: "#00000000"
+                    Text {
+                        id: text2
+                        x: 0
+                        y: 0
+                        width: 117
+                        height: 60
+                        color: "#ffffff"
+                        text: "Добавить грядку"
+                        font.pixelSize: 20
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
+            }
+        }
     }
 
     Rectangle{

@@ -69,5 +69,9 @@
         <file>PlantProfile.qml</file>
         <file>PlantsChar.qml</file>
         <file>PlantsList.qml</file>
+        <file>picture/Cyber-Shop.png</file>
+        <file>picture/Ежедневник.png</file>
+        <file>picture/Лента.png</file>
+        <file>picture/Форум.png</file>
     </qresource>
 </RCC>

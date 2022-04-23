@@ -13,9 +13,21 @@ public:
 
     QDate date;
 
+    bool isFromGoto = false;
+
 public slots:
     int getLeftDaySecondCall();
     int getLeftDayFirstCall();
+
+    void setIsFromGoto(bool value)
+    {
+        isFromGoto = value;
+    };
+
+    bool getIsFromGoto()
+    {
+        return isFromGoto;
+    }
 
 
 signals:

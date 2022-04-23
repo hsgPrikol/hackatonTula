@@ -8,6 +8,9 @@ Item {
     property bool is_overdue: false
     width: 150
     height: 40
+
+
+
     Rectangle {
         id: button
         visible: is_active
@@ -30,6 +33,10 @@ Item {
             id: mouseArea
             anchors.fill: button
             //hoverEnabled: true
+
+            onClicked: {
+                console.log("button")
+            }
         }
     }
 

@@ -92,6 +92,8 @@ Item {
 //            is_overdue: false
             button_text: "Полить"
             width: 150
+
+
         }
     }
 }

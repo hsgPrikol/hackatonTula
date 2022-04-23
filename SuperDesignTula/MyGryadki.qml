@@ -246,18 +246,24 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                //                    loader.sourceComponent = contactsList
-                if(createChatType == "group_chat"){
-                    client.createChat(logins, "Групповой чат", "", true)
-                }
-
-                client.getMyDialogs()
-                loader.sourceComponent = listDialog
-                //var str = "123213"
-                //testMap.createNewDialog(str)
+                dateLeft.setIsFromGoto(true);
+                loader.sourceComponent = plantsListComponent
 
 
-                console.log("loader.source = contactsList")
+
+
+//                //                    loader.sourceComponent = contactsList
+//                if(createChatType == "group_chat"){
+//                    client.createChat(logins, "Групповой чат", "", true)
+//                }
+
+//                client.getMyDialogs()
+//                loader.sourceComponent = listDialog
+//                //var str = "123213"
+//                //testMap.createNewDialog(str)
+
+
+//                console.log("loader.source = contactsList")
             }
         }
     }

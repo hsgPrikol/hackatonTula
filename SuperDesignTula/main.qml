@@ -14,6 +14,11 @@ ApplicationWindow{
 
 color: "#3fae51"
 
+
+
+
+
+
     Component{
         id: settingsComponent
 
@@ -80,7 +85,7 @@ color: "#3fae51"
     }
 
     Component{
-        id: planner
+        id: plannerComponent
         Planner{
 
         }
@@ -94,7 +99,7 @@ color: "#3fae51"
     }
 
     Component{
-        id: plantcreator
+        id: plantcreatorComponent
         PlantCreator{
 
         }
@@ -119,9 +124,9 @@ color: "#3fae51"
     Loader{
         id: loader
 
-        sourceComponent: plantcreator
+//        sourceComponent: plantcreator
 //        sourceComponent: plantElement
-        sourceComponent: plantsListComponent
+        sourceComponent: plannerComponent
     }
 
     Burgermenu{

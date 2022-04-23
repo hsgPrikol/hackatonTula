@@ -73,11 +73,27 @@ Rectangle {
 
     MouseArea {
         id: mouseContacts
-        enabled: createChatType != "group_chat"
+//        enabled: createChatType != "group_chat"
         anchors.fill: parent
         hoverEnabled: true
 
         onClicked: {
+
+            if (dateLeft.getIsFromGoto())
+            {
+                loader.sourceComponent = plantcreatorComponent
+            }
+            else
+            {
+//                loader.sourceComponent =
+                console.log("loader.sourceComponent = articles")
+            }
+
+
+
+
+
+
             //            if (createChatType == "non_chat")
             //            {
             //                currentContactOpen = indexContact
