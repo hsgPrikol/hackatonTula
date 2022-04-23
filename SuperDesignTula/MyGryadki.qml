@@ -197,6 +197,15 @@ Rectangle {
                     width: parent.width
                     height: parent.height
                     spacing: 10
+
+                    Repeater{
+                        model: 5
+
+                        PlantElement{
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+                    }
+
                 }
             }
         }

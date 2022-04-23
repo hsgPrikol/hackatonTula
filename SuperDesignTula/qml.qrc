@@ -33,5 +33,7 @@
         <file>picture/PauseAudio.tif</file>
         <file>picture/ri_tochki.tif</file>
         <file>picture/StartAudio.tif</file>
+        <file>Cirkleprogressbar.qml</file>
+        <file>ProfileAchivments.qml</file>
     </qresource>
 </RCC>

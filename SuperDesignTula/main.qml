@@ -12,7 +12,7 @@ ApplicationWindow{
     title: qsTr("Hello World")
 
 
-color: "black"
+color: "#3fae51"
 
     Component{
         id: settingsComponent
@@ -55,11 +55,19 @@ color: "black"
         }
     }
 
+    Component{
+        id: cirkleProgressBar
+
+        Cirkleprogressbar{
+
+        }
+    }
+
     Loader{
         id: loader
 
-        sourceComponent: plantElement
-        sourceComponent: myGryadkiComponent
+//        sourceComponent: plantElement
+        sourceComponent: cirkleProgressBar
     }
 
     Burgermenu{
