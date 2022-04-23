@@ -10,6 +10,9 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include "farmer.h"
+#include "plant.h"
+#include "farmerplant.h"
+#include <QVector>
 
 class ServerController
 {
@@ -23,6 +26,10 @@ public:
 
     int confirmAuthorization(QString login, QString passhash);
     Farmer* getUser(QString login);
+    Plant* getPlant(int id);
+    QVector<Plant> getAllPlant();
+    QString getTypePlant(int id);
+    FarmerPlant* getFarmerPlant(int id);
 };
 
 #endif // SERVERCONTROLLER_H

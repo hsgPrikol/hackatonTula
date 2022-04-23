@@ -63,4 +63,53 @@ Farmer *ServerController::getUser(QString login)
     return user;
 }
 
+Plant *ServerController::getPlant(int id)
+{
+    auto str = QString("SELECT name, info_path, description_path, avatar FROM plant WHERE id = %0;").arg(id);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    Plant* plant= new Plant(id, svalue(0), query.value(1).toByteArray(),query.value(2).toByteArray(),query.value(3).toByteArray() );
+    return plant;
+}
+
+QVector<Plant> ServerController::getAllPlant()
+{
+    auto str = QString("SELECT id FROM plant;");
+    QSqlQuery query(str);
+
+    QVector<Plant> plants;
+
+    while(query.next())
+    {
+        int plant_id = ivalue(0);
+        Plant* plant=getPlant(plant_id);
+        plants.append(*plant);
+    }
+
+    return plants;
+}
+
+QString ServerController::getTypePlant(int id)
+{
+    auto str = QString("SELECT name FROM type_plant WHERE id = %0;").arg(id);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    return svalue(0);
+}
+
+FarmerPlant *ServerController::getFarmerPlant(int id)
+{
+    auto str = QString("SELECT login, plant_id, stage, created_date, type_id, status, name, avatar FROM farmer_plant WHERE inst_id = %0;").arg(id);
+    QSqlQuery query(str);
+    if(!query.first())
+        return nullptr;
+    auto d2=svalue(3);
+    QDateTime created_date=QDateTime::fromString(d2, "yyyy-MM-dd hh:mm:ss");
+    QString type=getTypePlant(ivalue(4));
+    FarmerPlant* farmerPlant= new FarmerPlant(id, svalue(0), ivalue(1), ivalue(2), created_date, type,ivalue(5), svalue(6), query.value(7).toByteArray() );
+    return farmerPlant;
+}
+
 

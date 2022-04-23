@@ -10,7 +10,9 @@ CONFIG -= app_bundle
 
 SOURCES += \
         farmer.cpp \
+        farmerplant.cpp \
         main.cpp \
+        plant.cpp \
         servercontroller.cpp
 
 # Default rules for deployment.
@@ -20,4 +22,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     farmer.h \
+    farmerplant.h \
+    plant.h \
     servercontroller.h
