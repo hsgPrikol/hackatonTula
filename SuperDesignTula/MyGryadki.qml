@@ -72,6 +72,7 @@ Rectangle {
 
 
     function clearAll(){
+        if(columnContact.data!=null)
         for(var i = 0; i < columnContact.data.length;i++)
         {
             columnContact.data[i].destroy()

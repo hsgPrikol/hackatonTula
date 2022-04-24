@@ -85,7 +85,7 @@ Rectangle {
             }
             else
             {
-                loader.sourceComponent = pageComponent
+                //loader.sourceComponent = pageComponent
                 console.log("loader.sourceComponent = articles")
             }
 

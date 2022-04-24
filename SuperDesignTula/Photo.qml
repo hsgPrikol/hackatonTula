@@ -4,7 +4,10 @@ Item {
     id: root
     width: 506 - 20
     height: photo.height + 70
-    property string description_text: "Описание"
+    property string description_text
+    property string pathFile
+    property string dateTime
+    property int id
 
     Rectangle{
         id: background
@@ -19,13 +22,22 @@ Item {
             anchors.fill: parent
 
 
+            Image {
+                anchors.top: parent.top
+                anchors.topMargin: 30
+                id: photo
+                width: root.width - 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                fillMode: Image.PreserveAspectFit
+                source: pathFile
+            }
 
             Text{
-                id: day_text
+                id: dateTime
                 x: 10
                 y: 10
                 color: "#ffffff"
-                text: "24 апреля"
+                text: dateTime
                 font.pointSize: 12
             }
             Text{
@@ -35,17 +47,8 @@ Item {
                 y: 10
                 width: 40
                 color: "#ffffff"
-                text: "9:00"
+                text: dateTime
                 font.pointSize: 12
-            }
-            Image {
-                anchors.top: parent.top
-                anchors.topMargin: 30
-                id: photo
-                width: root.width - 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                fillMode: Image.PreserveAspectFit
-                source: "qrc:/picture/Рисунок1.jpg"
             }
 
             Text{

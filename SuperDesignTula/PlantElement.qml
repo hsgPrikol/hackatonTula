@@ -330,7 +330,8 @@ Item {
         anchors.fill: parent
 
         onClicked: {
-            //loader.sourceComponent=
+            selectedIdPlantFarmer = inst_id
+            loader.sourceComponent = pageComponent
         }
     }
     }

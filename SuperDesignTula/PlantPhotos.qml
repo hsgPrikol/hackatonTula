@@ -3,8 +3,29 @@ import QtQuick 2.0
 Item {
     id: root
 
+    property var tmpItem
+
     width: 506
     height: column.height
+
+    function clearAll(){
+        for(var i = 0; i < columnContact.data.length;i++)
+        {
+            columnContact.data[i].destroy()
+        }
+    }
+
+    function additem(id, inst_id, descrip, pathImage, dateTime){
+        if(selectedIdPlantFarmer ==inst_id){
+            tmp = tmpItem.createObject(column,
+                                               {
+                                                   id: id,
+                                                   dateTime: dateTime,
+                                                   pathFile: pathImage,
+                                                   description_text: descrip
+                                               });
+        }
+    }
 
     Rectangle {
         id: hatAccountMask
@@ -54,18 +75,24 @@ Item {
         spacing: 30
 
 
-        Item{
-            width: 1
-            height: 30
-        }
+//        Item{
+//            width: 1
+//            height: 30
+//        }
 
 
-        Repeater{
-            id: repeater
-            model: 5
-            Photo{
-                description_text: index
-            }
-        }
+//        Repeater{
+//            id: repeater
+//            model: 5
+//            Photo{
+//                description_text: index
+//            }
+//        }
+    }
+
+    Component.onCompleted: {
+        tmpItem = Qt.createComponent("Photo.qml");
+        client.onAddPlantMedia.connect(additem)
+        client.loadAllMedia();
     }
 }

@@ -33,14 +33,14 @@ Item {
             width: image_background.width - 60
             height: width
             anchors.centerIn: image_background
-            source: icon_path
+            source: client.getAvatarPlantFarmer(selectedIdPlantFarmer)
         }
     }
 
 
     TextField{
         id: plant_name
-        placeholderText: "Валера"
+        placeholderText: client.getNamePlantFarmer(selectedIdPlantFarmer)
         font.pixelSize: 29
 
 
@@ -87,7 +87,7 @@ Item {
 
         anchors.top: label1.bottom
         anchors.topMargin: 5
-        text: "24.03.2022"
+        text: client.getCreateTimePlantFarmer(selectedIdPlantFarmer)
         font.pixelSize: 21
     }
 

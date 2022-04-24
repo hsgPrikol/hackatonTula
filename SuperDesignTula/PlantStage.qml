@@ -48,7 +48,7 @@ Item {
     Image {
         id: stage_img
         y: 25
-        source: "qrc:/picture/stage2.png"
+        source: client.getStagePlantFarmer(selectedIdPlant) == 0 ? "qrc:/picture/stage1.png" : client.getStagePlantFarmer(selectedIdPlant) == 1? "qrc:/picture/stage2.png": client.getStagePlantFarmer(selectedIdPlant) == 2? "qrc:/picture/stage3.png":"qrc:/picture/stage4.png"
         fillMode: Image.PreserveAspectFit
         width: root.width-100
         anchors.horizontalCenter: root.horizontalCenter

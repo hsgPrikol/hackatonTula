@@ -7,6 +7,7 @@ ApplicationWindow{
     //    visibility: ApplicationWindow.FullScreen
 
     property int selectedIdPlant
+    property int selectedIdPlantFarmer
 
     width: 506
     height: 900

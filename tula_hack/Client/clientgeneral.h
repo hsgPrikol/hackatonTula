@@ -163,9 +163,17 @@ public slots:
 
     void emitPlantsFarmer();
     void loadGlossary();
+    void loadAllMedia();
+
     QString getPathForQML(QString path);
     QString getNamePlant(int id_plant);
     QString getAvatarPlant(int id_plant);
+
+    QString getNamePlantFarmer(int id_plant);
+    QString getAvatarPlantFarmer(int id_plant);
+    int getTypeGrountPlantFarmer(int id_plant);
+    QString getCreateTimePlantFarmer(int id_plant);
+    int getStagePlantFarmer(int id_plant);
 
     QString getMyName();
     QString getMyAvatar();
@@ -211,6 +219,7 @@ signals:
 
     void onAddPlantFarmer(int id, QString namePlant, int plant_id, int stage, QString createdDate, int tipe_id, int status, QString name, QString pathAvatar);
     void onAddPlant(int id, QString name, QString pathDescription, QString pathInfo, QString pathAvatar);
+    void onAddPlantMedia(int id, int inst_id, QString descrip, QString pathImage, QString dateTime);
 };
 
 #endif // CLIENTGENERAL_H

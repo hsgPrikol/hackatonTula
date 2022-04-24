@@ -42,6 +42,10 @@ Item {
                 fillMode: Image.PreserveAspectFit
                 MouseArea {
                     anchors.fill: parent
+
+                    onClicked: {
+                        loader.sourceComponent = myGryadkiComponent
+                    }
                 }
             }
         }
@@ -53,7 +57,7 @@ Item {
             width: 125
             height: 44
             color: "#ffffff"
-            text: qsTr("Мандарин")
+            text: client.getNamePlantFarmer(selectedIdPlantFarmer)
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -66,7 +70,7 @@ Item {
             width: 125
             height: 19
             color: "#ffffff"
-            text: qsTr("Закрытый грунт")
+            text: client.getTypeGroundPlantFarmer(selectedIdPlantFarmer) == 0 ? "Открытый грунт":"Закрытый грунт"
             font.pixelSize: 12
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -94,7 +98,7 @@ Item {
                     anchors.fill: parent
 
                     onClicked: {
-//                        loader.sourceComponent =
+                        loader.sourceComponent = plantsListComponent
                         console.log("In Glossariu")
                     }
                 }
@@ -130,7 +134,7 @@ Item {
 
             }
             PlantPhotos{
-                anchors.horizontalCenter: root.horizontalCenter
+                //anchors.horizontalCenter: root.horizontalCenter
             }
         }
     }

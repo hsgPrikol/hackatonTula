@@ -727,6 +727,21 @@ void ClientGeneral::loadGlossary()
     }
 }
 
+void ClientGeneral::loadAllMedia()
+{
+    foreach(FarmerPlant plant, plantsFarmer){
+        foreach(MediaPlant m , plant.mediasPlant)
+        emit onAddPlantMedia(
+                    m.id,
+                    plant.inst_id,
+                    m.description,
+
+                    getPathForQML(pathFiles[m.image]),
+                    m.dateTime.toString("dd.MM.yyyy hh:mm")
+                    );
+    }
+}
+
 QString ClientGeneral::getPathForQML(QString path)
 {
     return "file:///"+path;
@@ -740,6 +755,31 @@ QString ClientGeneral::getNamePlant(int id_plant)
 QString ClientGeneral::getAvatarPlant(int id_plant)
 {
     return getPathForQML(pathFiles[plants[id_plant].avatar]);
+}
+
+QString ClientGeneral::getNamePlantFarmer(int id_plant)
+{
+    return plantsFarmer[id_plant].name;
+}
+
+QString ClientGeneral::getAvatarPlantFarmer(int id_plant)
+{
+    return getPathForQML(pathFiles[plantsFarmer[id_plant].avatar]);
+}
+
+int ClientGeneral::getTypeGrountPlantFarmer(int id_plant)
+{
+    return plantsFarmer[id_plant].type_id;
+}
+
+QString ClientGeneral::getCreateTimePlantFarmer(int id_plant)
+{
+    return plantsFarmer[id_plant].created_date.toString("dd.MM.yyyy hh:mm");
+}
+
+int ClientGeneral::getStagePlantFarmer(int id_plant)
+{
+    return plantsFarmer[id_plant].stage;
 }
 
 QString ClientGeneral::getMyName()
