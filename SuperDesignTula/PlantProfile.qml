@@ -7,10 +7,9 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id: contactPageMain
 
-    property string nameContact
-    property string pathAvatarContact
-    property int  indexContact
-    property string login
+    property string namePlant
+    property int idPlant
+    property string pathAvatar
 
     x: 50
     y: 8
@@ -43,7 +42,7 @@ Rectangle {
                 id: image1
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectCrop
-                source: pathAvatarContact
+                source: pathAvatar
                 layer.enabled: true
                 layer.effect: OpacityMask {
                     maskSource: parent
@@ -62,7 +61,7 @@ Rectangle {
                 property int fontSize: 20
                 id: textName
                 anchors.fill: parent
-                text: nameContact
+                text: namePlant
                 font.pixelSize: textName.fontSize
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
@@ -81,6 +80,7 @@ Rectangle {
 
             if (dateLeft.getIsFromGoto())
             {
+                selectedIdPlant = idPlant
                 loader.sourceComponent = plantcreatorComponent
             }
             else

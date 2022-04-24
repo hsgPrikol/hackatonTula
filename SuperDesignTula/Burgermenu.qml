@@ -26,9 +26,9 @@ Rectangle {
         openNavDrawer.start()
         console.log("showNavDrawer()")
 
-        imgAvatar.source=currentUser.getAvatarFile()!=""?"file:///" +currentDir+"/" +  currentUser.getAvatarFile() : "qrc:/resourses/avatar/cop.tif"
-        tbName.text=currentUser.getName();
-        tbLogin.text=currentUser.getLogin();
+        imgAvatar.source=client.getMyAvatar()
+        tbName.text=client.getMyName();
+        tbLogin.text=client.getMyLogin();
     }
 
 
@@ -97,7 +97,7 @@ Rectangle {
                         y: 8
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectCrop
-                        source: "qrc:/resourses/avatar/cop.tif"
+                        source: client.getMyAvatar()
                         anchors.rightMargin: 0
                         anchors.bottomMargin: 0
                         anchors.leftMargin: 0
@@ -165,10 +165,14 @@ Rectangle {
                     anchors.leftMargin: 10
                     anchors.fill: parent
                     color: "#ffffff"
-                    text: "Подсолнух"
+                    text: client.getMyName()
                     font.pixelSize: fontSize
                     verticalAlignment: Text.AlignVCenter
+                    Component.onCompleted: {
+                        text: client.getMyName()
+                    }
                 }
+
 
             }
 
@@ -185,7 +189,7 @@ Rectangle {
                     anchors.leftMargin: 10
                     anchors.fill: parent
                     color: "#ffffff"
-                    text: "Логин"
+                    text: client.getMyLogin()
                     font.pixelSize: 12
                     verticalAlignment: Text.AlignVCenter
                 }

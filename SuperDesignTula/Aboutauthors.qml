@@ -144,7 +144,7 @@ import QtGraphicalEffects 1.0
         anchors.fill: parent
 
         onClicked: {
-            loader.sourceComponent = listDialog
+            loader.sourceComponent = myGryadkiComponent
         }
     }
 

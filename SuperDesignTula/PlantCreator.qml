@@ -6,6 +6,13 @@ Item {
     width: 506
     height: 900
     property string icon_path: "qrc:/picture/strawberry.tif"
+
+    function loadGrydks(){
+        loader.sourceComponent = myGryadkiComponent
+    }
+
+
+
     Rectangle{
         anchors.fill: parent
         width: parent.width
@@ -112,7 +119,7 @@ Item {
             width: image_background.width - 60
             height: width
             anchors.centerIn: image_background
-            source: icon_path
+            source: client.getAvatarPlant(selectedIdPlant)
         }
     }
 
@@ -122,7 +129,7 @@ Item {
         anchors.top: image_background.bottom
         anchors.topMargin: 25
         anchors.horizontalCenter: root.horizontalCenter
-        text: qsTr("Азалия")
+        text: client.getNamePlant(selectedIdPlant)
         color: "#f5f5f5"
         font.pixelSize: 35
     }
@@ -138,7 +145,7 @@ Item {
         anchors.topMargin: 30
         anchors.horizontalCenter: root.horizontalCenter
 
-        placeholderText: "Имя"
+        placeholderText: client.getNamePlant(selectedIdPlant)
 
         color: "#f5f5f5"
         font.pixelSize: 15
@@ -251,6 +258,14 @@ Item {
             id: mouseArea
             anchors.fill: button
             //hoverEnabled: true
+
+            onClicked: {
+                client.sendAddPlantForUser(stage_combobox.currentIndex,type_combobox.currentIndex, selectedIdPlant, name_textfield.text,plant_image.source )
+            }
         }
+    }
+
+    Component.onCompleted: {
+        client.onAnswerPlantsUser.connect(loadGrydks)
     }
 }

@@ -84,6 +84,22 @@ void ProtocolCommunication::SaveBinaryFile(QString binary, QString name, QString
     file.close();
 }
 
+QString ProtocolCommunication::SaveBinaryFile(QString binary, QString name, QString id)
+{
+    QDir p=QDir::current();
+
+    QString path = p.path()+"/" + name +"_"+id;
+    QFile file(path);
+
+    QByteArray byteArray = StringToByteArray(binary);
+
+    file.open(QIODevice::WriteOnly);
+    file.write(byteArray);
+    file.close();
+
+    return path;
+}
+
 void ProtocolCommunication::SendTextMessage(QString message, QWebSocket *client)
 {
     client->sendTextMessage(message);

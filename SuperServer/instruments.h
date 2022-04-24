@@ -16,6 +16,9 @@ public:
     static QDate getDate(QString date);
     static QDateTime getDateTime(QString dateTime);
     static QString byteArrayToString(QByteArray bytes);
+
+    static QByteArray StringToByteArray(QString string);
+    static QString ByteArrayToString(QByteArray array);
 };
 
 #endif // INSTRUMENTS_H

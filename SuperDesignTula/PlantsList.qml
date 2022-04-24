@@ -50,30 +50,32 @@ Rectangle {
             columnContact.data[i].destroy()
         }
 
-        var countD = clientData.getCountMapContacts();
+        var countD = client.getCountCharPlants();
 
         var tmp;
 
+        var sum=0;
         for(var i=0;i<countD;i++){
             tmp = tmpContactsChar.createObject(columnContact,
                                                {
                                                    indexRepeaterChar: i,
-                                                   textRepeaterChar: clientData.getCharMapContacts(i),
-                                                   dfltHeight: clientData.getCountContactsInMap(clientData.getCharMapContacts(i)) * sizeHeightRectName
+                                                   textRepeaterChar: client.getCharPlantsForIndex(i),
+                                                   //dfltHeight: client.getCountPlantsinChar(i) * sizeHeightRectName
                                                    //                                                   textRepeaterContactsName: contactsss.getName(i)
                                                });
+            sum+=client.getCountPlantsinChar(i);
         }
 
-        if(createChatType == "just_chat")
-            chat_title = "Создать чат"
-        else if(createChatType == "group_chat")
-            chat_title = "Создать группу"
-        else if(createChatType == "private_chat")
-            chat_title = "Создать приватный чат"
-        else if(createChatType == "non_chat")
-            chat_title = "Контакты"
+//        if(createChatType == "just_chat")
+//            chat_title = "Создать чат"
+//        else if(createChatType == "group_chat")
+//            chat_title = "Создать группу"
+//        else if(createChatType == "private_chat")
+//            chat_title = "Создать приватный чат"
+//        else if(createChatType == "non_chat")
+//            chat_title = "Контакты"
 
-        scrollContacts.contentHeight= clientData.getc * sizeHeightRectName
+        scrollContacts.contentHeight= sum * sizeHeightRectName
     }
 
 
@@ -228,16 +230,16 @@ Rectangle {
                     //                    height: parent.height
                     spacing: 10
 
-                    Repeater{
-                        model: testChar.length
-                        PlantsChar{
-                            //                            border.color: "red"
+//                    Repeater{
+//                        model: testChar.length
+//                        PlantsChar{
+//                            //                            border.color: "red"
 
-                            textRepeaterChar: testChar[index]
-                            indexRepeaterChar: index
-                            testList: testAG[index]
-                        }
-                    }
+//                            textRepeaterChar: testChar[index]
+//                            indexRepeaterChar: index
+//                            testList: testAG[index]
+//                        }
+//                    }
                 }
             }
         }
@@ -296,7 +298,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        tmpContactsChar = Qt.createComponent("ContactsChar.qml");
+        tmpContactsChar = Qt.createComponent("PlantsChar.qml");
         loadContacts()
     }
 }

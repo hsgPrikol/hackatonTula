@@ -19,6 +19,7 @@ Rectangle {
     property var tmpContactsChar
     property string chat_title: "Контакты"
 
+    property var patternPlantElement
 
 
     property int counter: 0
@@ -52,23 +53,47 @@ Rectangle {
                                                {
                                                    indexRepeaterChar: i,
                                                    textRepeaterChar: clientData.getCharMapContacts(i),
-                                                   dfltHeight: clientData.getCountContactsInMap(clientData.getCharMapContacts(i)) * sizeHeightRectName
+                                                   //dfltHeight: clientData.getCountContactsInMap(clientData.getCharMapContacts(i)) * sizeHeightRectName
                                                    //                                                   textRepeaterContactsName: contactsss.getName(i)
                                                });
         }
 
-        if(createChatType == "just_chat")
-            chat_title = "Создать чат"
-        else if(createChatType == "group_chat")
-            chat_title = "Создать группу"
-        else if(createChatType == "private_chat")
-            chat_title = "Создать приватный чат"
-        else if(createChatType == "non_chat")
-            chat_title = "Контакты"
+//        if(createChatType == "just_chat")
+//            chat_title = "Создать чат"
+//        else if(createChatType == "group_chat")
+//            chat_title = "Создать группу"
+//        else if(createChatType == "private_chat")
+//            chat_title = "Создать приватный чат"
+//        else if(createChatType == "non_chat")
+//            chat_title = "Контакты"
 
         scrollContacts.contentHeight= clientData.getc * sizeHeightRectName
     }
 
+
+    function clearAll(){
+        for(var i = 0; i < columnContact.data.length;i++)
+        {
+            columnContact.data[i].destroy()
+        }
+    }
+
+    function addPlantFarmer(id, namePlant, _plant_id, stage, createdDate, tipe_id, _status, name, pathAvatar){
+        tmp = patternPlantElement.createObject(columnContact,
+                                           {
+                                               //horizontalCenter: parent.horizontalCenter,
+                                               stage_textfield: stage,
+                                               username: name,
+                                               name: namePlant,
+                                               icon_path: pathAvatar,
+                                               inst_id: id,
+                                               plant_id: _plant_id ,
+                                               created_date: createdDate,
+                                               type_id: tipe_id,
+                                               status: _status
+
+                                           });
+    }
 
     onCounterChanged: {
         if(counter > 0)
@@ -198,13 +223,13 @@ Rectangle {
                     height: parent.height
                     spacing: 10
 
-                    Repeater{
-                        model: 5
+//                    Repeater{
+//                        model: 5
 
-                        PlantElement{
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-                    }
+//                        PlantElement{
+//                            anchors.horizontalCenter: parent.horizontalCenter
+//                        }
+//                    }
 
                 }
             }
@@ -215,7 +240,7 @@ Rectangle {
         id: addNewDialogMask
         x: 434
         y: 828
-        visible: createChatType == "group_chat" && counter > 0
+//        visible: createChatType == "group_chat" && counter > 0
         color: "#00000000"
         width: 72
         height: 72
@@ -270,8 +295,12 @@ Rectangle {
 
 
     Component.onCompleted: {
-        tmpContactsChar = Qt.createComponent("ContactsChar.qml");
-        loadContacts()
+        patternPlantElement = Qt.createComponent("PlantElement.qml");
+        //loadContacts()
+        client.onAnswerPlantsUser.connect(clearAll);
+        client.onAddPlantFarmer.connect(addPlantFarmer);
+        client.sendGetPlantsUser();
+        client.emitPlantsFarmer();
     }
 }
 
