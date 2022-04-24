@@ -44,7 +44,7 @@ Item {
                     Repeater{
                         model: 10
                         TaskPlant{
-
+                            button_text_: index%2 == 0 ? "Включить" : "Полить"
                         }
                     }
 

@@ -103,9 +103,35 @@ Item {
             anchors.horizontalCenter: root.horizontalCenter
             spacing: 10
             Column{
-                width: 230
+                width: header.width
                 id: first
                 spacing: 7
+
+
+                Item{
+                    width: 1
+                    height: 10
+                }
+                Image {
+                    width: parent.width
+                    fillMode:Image.PreserveAspectFit
+                    source: "qrc:/picture/weather.png"
+                }
+                Image {
+                    width: parent.width
+                    fillMode:Image.PreserveAspectFit
+                    source: "qrc:/picture/flowers.png"
+                }
+                Image {
+                    width: parent.width
+                    fillMode:Image.PreserveAspectFit
+                    source: "qrc:/picture/berry.png"
+                }
+
+                Item{
+                    width: 1
+                    height: 10
+                }
 
                 Item{
                     width: 1
@@ -142,36 +168,8 @@ Item {
                     width: 1
                     height: 10
                 }
-            }
-            Column{
-                width: 230
-                id: second
-                spacing: 7
 
-                Item{
-                    width: 1
-                    height: 10
-                }
-                Image {
-                    width: parent.width
-                    fillMode:Image.PreserveAspectFit
-                    source: "qrc:/picture/weather.png"
-                }
-                Image {
-                    width: parent.width
-                    fillMode:Image.PreserveAspectFit
-                    source: "qrc:/picture/flowers.png"
-                }
-                Image {
-                    width: parent.width
-                    fillMode:Image.PreserveAspectFit
-                    source: "qrc:/picture/berry.png"
-                }
 
-                Item{
-                    width: 1
-                    height: 10
-                }
             }
         }
     }

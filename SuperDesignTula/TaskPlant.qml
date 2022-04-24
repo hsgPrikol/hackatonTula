@@ -5,6 +5,9 @@ Item {
     width: 480
     height: 50
 
+    property var day_value: 25
+    property string button_text_: "Полить"
+
     Rectangle{
         id: background
         color: "#f5f5f5"
@@ -30,13 +33,13 @@ Item {
                     font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     color: "#7F7F7F"
-                    text: "25"
+                    text: day_value
                     //                anchors.verticalCenter: row.verticalCenter
                     //anchors.left: row.left
                     //anchors.leftMargin: 10
                 }
                 Text{
-                    id: dayOfWeek
+                    id: dayOfWeekText
 //                    height: 45
                     font.pixelSize: 10
                     horizontalAlignment: Text.AlignHCenter
@@ -90,10 +93,11 @@ Item {
             anchors.verticalCenter: background.verticalCenter
 //            is_active: false
 //            is_overdue: false
-            button_text: "Полить"
+            button_text: button_text_
             width: 150
 
 
         }
     }
+
 }

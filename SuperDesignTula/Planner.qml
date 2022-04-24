@@ -6,6 +6,10 @@ Item {
     width: app_width
     height: app_height
 
+
+    property var month_list: ["Апрель","Май","Июнь"]
+
+
     Rectangle {
         width: parent.width
         height: parent.height
@@ -113,17 +117,21 @@ Item {
         clip: true
         contentHeight: month.cheight
         contentWidth: app_width
+
+
+
         Column{
 //            anchors.horizontalCenter: parent.right
             anchors.left: parent.left
             anchors.leftMargin: 30
             width: app_height
             spacing: 10
+
             Repeater{
                 model: 3
                 PlannerMonth{
                     id: month
-                    textR: "fddf" + index
+                    textR: month_list[index]
                 }}
         }
     }
