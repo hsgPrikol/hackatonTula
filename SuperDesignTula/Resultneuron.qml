@@ -6,7 +6,8 @@ Rectangle {
     height: app_height
 
     color: "#f4f5f6"
-    property var img
+
+
 
     Rectangle {
         id: header
@@ -85,7 +86,7 @@ Rectangle {
             width: 274
             height: 64
             color: "#ffffff"
-            text: qsTr("99 %")
+            text: probability_camera_neuron
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -107,11 +108,11 @@ Rectangle {
 
         Image {
             id: image
-            x: 110
-            y: 304
-            width: 274
-            height: 184
-            source: "qrc:/qtquickplugin/images/template_image.png"
+            x: 54
+            y: 272
+            width: 398
+            height: 253
+            source: img_camera_neuron
             fillMode: Image.PreserveAspectFit
         }
 
@@ -122,7 +123,7 @@ Rectangle {
             width: 274
             height: 93
             color: "#ffffff"
-            text: qsTr("это")
+            text: plant_name_camera_neuron
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -135,7 +136,7 @@ Rectangle {
             width: 459
             height: 181
             color: "#ffffff"
-            text: qsTr("Text")
+            text: value_camera_neuron
             elide: Text.ElideRight
             font.pixelSize: 16
             horizontalAlignment: Text.AlignLeft
@@ -150,7 +151,7 @@ Rectangle {
             width: 459
             height: 44
             color: "#ffffff"
-            text: qsTr("Ссылку")
+            text: url_camera_neuron
             elide: Text.ElideRight
             font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
