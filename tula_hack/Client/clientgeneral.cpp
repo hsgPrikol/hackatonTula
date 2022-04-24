@@ -113,7 +113,7 @@ void ClientGeneral::handlerAuthorization(QJsonObject *object)
     {
         // успешная авторизация
         isAuthorization = true;
-
+        sendGetInformationAboutUser();
         emit onAnswerAuthorization(true);
     }
     else
@@ -131,6 +131,7 @@ void ClientGeneral::handlerRegistration(QJsonObject *object)
     {
         // успешная регистрация
         isAuthorization = true;
+        sendGetInformationAboutUser();
         emit onAnswerRegistration(true);
     }
     else
@@ -147,7 +148,8 @@ void ClientGeneral::handlerInformationAboutUser(QJsonObject *object)
     if(resultStatus == ProtocolCommunication::___STS_DONE)
     {
         // информация получена
-        farmer.avatar = ProtocolCommunication::StringToByteArray(((*object)[ProtocolCommunication::___EXP_USER]).toString());
+        farmer.avatar = ProtocolCommunication::StringToByteArray(((*object)[ProtocolCommunication::___IMAGE]).toString());
+        pathFiles[farmer.avatar] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(farmer.avatar),"avatarUser", myLogin);
         farmer.birth_date = QDate::fromString(((*object)[ProtocolCommunication::___BIRTH_DATE]).toString());
         farmer.carm = ((*object)[ProtocolCommunication::___CARM_USER]).toString().toInt();
         farmer.exp = ((*object)[ProtocolCommunication::___EXP_USER]).toString().toInt();
@@ -193,11 +195,15 @@ void ClientGeneral::handlerPlantsUser(QJsonObject *object)
                                             ((jObj)[ProtocolCommunication::___NAME]).toString(),
                                             ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___IMAGE]).toString())
                                          );
-
+            pathFiles[farmerPlant->avatar] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(farmerPlant->avatar),"avatarPlantuser", QString::number(farmerPlant->inst_id));
+            sendGetMediaForFarmerPlantAll(QString::number(farmerPlant->inst_id));
             plantsFarmer[farmerPlant->inst_id] = *farmerPlant;
         }
-
         emit onAnswerPlantsUser();
+
+        sendGetLogForUser();
+        emitPlantsFarmer();
+
     }
     else
     {
@@ -248,8 +254,12 @@ void ClientGeneral::handlerAllDataFromGlossary(QJsonObject *object)
                                 ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___DESCRIPTION]).toString()),
                                 ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___IMAGE]).toString())
                              );
+            pathFiles[plant->avatar] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"avatarPlan", QString::number(plant->id));
+            pathFiles[plant->description_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"descriptionPlant", QString::number(plant->id));
+            pathFiles[plant->info_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"descriptionPlant", QString::number(plant->id));
 
             plants[plant->id] = *plant;
+            plantsChar[plant->name[0].toUpper()].push_back(*plant);
         }
 
         emit onAnswerAllDataFromGlossary();
@@ -320,7 +330,7 @@ void ClientGeneral::handlerMediaForFarmerPlantAll(QJsonObject *object)
                                             ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___IMAGE]).toString()),
                                             QDateTime::fromString(((jObj)[ProtocolCommunication::___DATE_TIME]).toString())
                                        );
-
+            pathFiles[mediaPlant->image] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(mediaPlant->image),"mediaPlant", QString::number(mediaPlant->id) +"_"+QString::number(mediaPlant->inst_id));
             plantsFarmer[inst_id].mediasPlant.push_back(*mediaPlant);
         }
 
@@ -419,6 +429,7 @@ void ClientGeneral::handlerAllDataAchivementsUser(QJsonObject *object)
                                             ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___IMAGE]).toString())
                                         );
 
+            pathFiles[achivement->image] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(achivement->image),"achivement", QString::number(achivement->id));
             achivementFarmer[achivement->id] = *achivement;
         }
 
@@ -457,38 +468,45 @@ void ClientGeneral::sendRegistration(QString login, QString password, QString em
     myLogin = login;
 }
 
-void ClientGeneral::sendGetInformationAboutUser(QString login)
+void ClientGeneral::sendGetInformationAboutUser()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_INFO_ABOUT_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendGetPlantsUser(QString login)
+void ClientGeneral::sendGetPlantsUser()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_PLANTS_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendAddPlantForUser(QString login, QString stage, QString date, QString typeGround, QString idPlant, QString name, QString avatar)
+void ClientGeneral::sendAddPlantForUser(QString stage, QString typeGround, QString idPlant, QString name, QString avatar)
 {
+    if(name=="") name=getNamePlant(idPlant.toInt());
+    QByteArray bytes = ProtocolCommunication::LoadBinaryFile(avatar.remove(0,8));
+
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_ADD_PLANT_FOR_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)},
                                                 {ProtocolCommunication::___STAGE_PLANT, QJsonValue(stage)},
-                                                {ProtocolCommunication::___DATE_TIME, QJsonValue(date)},
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)},
                                                 {ProtocolCommunication::___TYPE_GROUND, QJsonValue(typeGround)},
                                                 {ProtocolCommunication::___ID, QJsonValue(idPlant)},
                                                 {ProtocolCommunication::___NAME, QJsonValue(name)},
-                                                {ProtocolCommunication::___IMAGE, QJsonValue(avatar)}
+                                                {ProtocolCommunication::___IMAGE, QJsonValue(ProtocolCommunication::ByteArrayToString(bytes))}
                                             });
+
+    FarmerPlant pl(myLogin, idPlant.toInt(), stage.toInt(), typeGround.toInt(),1,name, bytes);
+    plantsFarmer[-1]=pl;
+
+    sendGetPlantsUser();
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
@@ -541,11 +559,11 @@ void ClientGeneral::sendGetAllDataFromGlossary()
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendGetUserTask(QString login)
+void ClientGeneral::sendGetUserTask()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_USER_TASK)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
@@ -595,11 +613,11 @@ void ClientGeneral::sendAddMediaForFarmerPlant(QString description, QString imag
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendGetLogForUser(QString login)
+void ClientGeneral::sendGetLogForUser()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_LOG_FOR_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
@@ -627,11 +645,11 @@ void ClientGeneral::sendAddLog(QString login, QString idPlant, QString idAction,
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendGetAchivementsUser(QString login)
+void ClientGeneral::sendGetAchivementsUser()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_ACHIVEMENTS_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
@@ -647,11 +665,11 @@ void ClientGeneral::sendGetInfoAboutAchivement(QString id)
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
 }
 
-void ClientGeneral::sendGetAllDataAchivementsUser(QString login)
+void ClientGeneral::sendGetAllDataAchivementsUser()
 {
     QJsonObject* jObj = new QJsonObject({
                                                 {ProtocolCommunication::___COMMAND, QJsonValue(ProtocolCommunication::___CMD_GET_ALL_DATA_ACHIVEMENTS_USER)},
-                                                {ProtocolCommunication::___LOGIN, QJsonValue(login)}
+                                                {ProtocolCommunication::___LOGIN, QJsonValue(myLogin)}
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
@@ -677,6 +695,86 @@ void ClientGeneral::setStagePlant(QString instID, QString newValueStage)
                                             });
 
     ProtocolCommunication::SendTextMessage(ProtocolCommunication::jsonObjectToString(jObj), &socketServer);
+}
+
+void ClientGeneral::emitPlantsFarmer()
+{
+    foreach(FarmerPlant farmerPlant, plantsFarmer){
+        emit onAddPlantFarmer(
+                    farmerPlant.inst_id,
+                    getNamePlant(farmerPlant.plant_id),
+                    farmerPlant.plant_id,
+                    farmerPlant.stage,
+                    farmerPlant.created_date.toString(),
+                    farmerPlant.type_id,
+                    farmerPlant.status,
+                    farmerPlant.name,
+                    getPathForQML(pathFiles[farmerPlant.avatar])
+                    );
+    }
+}
+
+void ClientGeneral::loadGlossary()
+{
+    foreach(Plant plant, plants){
+        emit onAddPlant(
+                    plant.id,
+                    plant.name,
+                    getPathForQML(pathFiles[plant.description_path]),
+                    getPathForQML(pathFiles[plant.info_path]),
+                    getPathForQML(pathFiles[plant.avatar])
+                    );
+    }
+}
+
+QString ClientGeneral::getPathForQML(QString path)
+{
+    return "file:///"+path;
+}
+
+QString ClientGeneral::getNamePlant(int id_plant)
+{
+    return plants[id_plant].name;
+}
+
+QString ClientGeneral::getAvatarPlant(int id_plant)
+{
+    return getPathForQML(pathFiles[plants[id_plant].avatar]);
+}
+
+QString ClientGeneral::getMyName()
+{
+    return farmer.user_name;
+}
+
+QString ClientGeneral::getMyAvatar()
+{
+    return getPathForQML(pathFiles[farmer.avatar]);
+}
+
+QString ClientGeneral::getMyLogin()
+{
+    return farmer.login;
+}
+
+int ClientGeneral::getCountCharPlants()
+{
+    return plantsChar.count();
+}
+
+QString ClientGeneral::getCharPlantsForIndex(int index)
+{
+    return plantsChar.keys()[index];
+}
+
+int ClientGeneral::getCountPlantsinChar(int index)
+{
+    return plantsChar[plantsChar.keys()[index]].count();
+}
+
+int ClientGeneral::getPlantsForIndexChar(QString c, int index)
+{
+    return plantsChar[c][index].id;
 }
 
 ClientGeneral::ClientGeneral(QObject *parent) : QObject(parent)

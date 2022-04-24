@@ -16,12 +16,22 @@ Item {
     property string temperature_data_text: "22 ⁰С"
     property string light_data_text: "--"
 
+
+    property int inst_id;
+    property int plant_id;
+    property string created_date;
+    property int type_id;
+    property int status;
+
+
     Rectangle{
         id: background
         anchors.fill: root
         radius: 25
 
         color: "#ccf5f5f5"
+
+
 
         Column{
             id: element_column
@@ -102,7 +112,7 @@ Item {
                             id: stage_text
                             color:"#f5f5f5"
                             font.pixelSize: 23
-                            text: stage_textfield
+                            text: stage_textfield == "1" ? "I" : stage_textfield == "2" ? "II" : stage_textfield == "3" ? "III" :"IV"
                             font.family: "Times New Roman"
                             anchors.centerIn: stage_background
                         }
@@ -314,6 +324,15 @@ Item {
                 }
             }
         }
+
+    MouseArea{
+        id: mouseArea_rect
+        anchors.fill: parent
+
+        onClicked: {
+            //loader.sourceComponent=
+        }
+    }
     }
 }
 

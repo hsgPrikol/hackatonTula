@@ -12,8 +12,13 @@ Rectangle {
 
     function onAutorization(flag)
     {
-        if (flag)
+        if (flag){
             loader.sourceComponent = plannerComponent
+            client.sendGetAchivementsUser()
+            client.sendGetAllDataFromGlossary()
+            client.sendGetPlantsUser()
+
+        }
         else
             console.log("Error autorization")
     }
@@ -95,7 +100,7 @@ Rectangle {
                 width: 231
                 height: 51
                 color: "#ffffff"
-                text: "igor"
+                text: "maksim"
                 hoverEnabled: false
                 focus: true
                 placeholderTextColor: "#404040"

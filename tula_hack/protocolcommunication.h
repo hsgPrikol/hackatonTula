@@ -6,6 +6,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QFile>
+#include <QDir>
 
 
 
@@ -77,6 +78,7 @@ public:
     static QByteArray StringToByteArray(QString string);
     static bool CompareSocket(QWebSocket* a, QWebSocket* b);
     static void SaveBinaryFile(QString binary, QString name, QString type, QString idMedia, QString idInst);
+    static QString SaveBinaryFile(QString binary, QString name, QString id);
     static void SendTextMessage(QString message, QWebSocket *client);
     static void SendBinaryMessage(QByteArray message, QWebSocket *client);
     static QString jsonObjectToString(QJsonObject *object);

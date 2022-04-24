@@ -63,16 +63,10 @@
         <file>achivments/rost.png</file>
         <file>achivments/temperature.png</file>
         <file>achivments/water.png</file>
-        <file>achivments/Голосеменные.png</file>
-        <file>achivments/Неизвестное.png</file>
-        <file>achivments/Цветковые.png</file>
         <file>PlantProfile.qml</file>
         <file>PlantsChar.qml</file>
         <file>PlantsList.qml</file>
         <file>picture/Cyber-Shop.png</file>
-        <file>picture/Ежедневник.png</file>
-        <file>picture/Лента.png</file>
-        <file>picture/Форум.png</file>
         <file>Cameraneuron.qml</file>
     </qresource>
 </RCC>

@@ -24,9 +24,9 @@ Rectangle {
     property var testList: []
 
     width: dfltWidth
-    height: dfltHeight * testList.length
+    //height: dfltHeight * testList.length
 //        border.width: 1
-//        border.color: "white"
+ //      border.color: "white"
 
     color: noColor
 
@@ -36,33 +36,24 @@ Rectangle {
             columnContactList.data[i].destroy()
         }
 
-        var countD = clientData.getCountContactsInMap(textRepeaterChar);
+        var countD = client.getCountPlantsinChar(indexRepeaterChar);
 
         var tmp;
 
-
         var list = []
 
-        var counter = 0
-
         for(var i=0;i<countD;i++){
-            if (clientData.getLoginContact(textRepeaterChar, i) != clientData.getCurrentLogin()){
+                var idPlant = client.getPlantsForIndexChar(textRepeaterChar,i);
                 tmp = tmpContactName.createObject(columnContactList,
                                                   {
-                                                      nameContact: clientData.getNameContact(textRepeaterChar, i),
-                                                      indexContact: i,
+                                                      namePlant: client.getNamePlant(idPlant),
+                                                      idPlant: idPlant,
+                                                      pathAvatar: client.getAvatarPlant(idPlant)
 
-                                                      pathAvatarContact: clientData.getPathAvatarContact(textRepeaterChar, i) != ""?"file:///" +currentDir+"/" + clientData.getPathAvatarContact(textRepeaterChar, i):"qrc:/resourses/avatar/cop.tif",
-                                                      login: clientData.getLoginContact(textRepeaterChar, i)
-                                                      //                                                   textRepeaterContactsName: contactsss.getName(i)
                                                   });
-                counter++
-            }
+
         }
-
-        if(counter == 0)
-            root.visible = false
-
+        root.height= dfltHeight * countD
         rootLineCharList.height= countD * dfltHeightContactList - 50
     }
 
@@ -91,15 +82,15 @@ Rectangle {
         id: columnContactList
         y:30
 
-        Repeater{
-            model: testList.length
-            PlantProfile{
+//        Repeater{
+//            model: testList.length
+//            PlantProfile{
 
 
-                nameContact: testList[index]
-                indexContact: index
-            }
-        }
+//                nameContact: testList[index]
+//                indexContact: index
+//            }
+//        }
     }
 
     Rectangle {
@@ -116,9 +107,9 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        tmpContactName= Qt.createComponent("ContactPageMain.qml");
+        tmpContactName= Qt.createComponent("PlantProfile.qml");
         console.log("s")
-//        loadContactsInChar();
+        loadContactsInChar();
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

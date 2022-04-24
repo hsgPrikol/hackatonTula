@@ -21,18 +21,24 @@ class ClientGeneral : public QObject
 public:
     explicit ClientGeneral(QObject *parent = nullptr);
 
+
+
+
 private:
     const QUrl URL_SERVER = QUrl(QStringLiteral("ws://localhost:1234"));
 
     QWebSocket socketServer;
 
-    bool isAuthorization = false;
-    QString myLogin;
     Farmer farmer;
     QMap<int, FarmerPlant> plantsFarmer;
     QMap<int, Plant> plants;
+    QMap<QString, QVector<Plant>> plantsChar;
     QMap<int, FarmerTask> tasksFarmer;
     QMap<int, Achivement> achivementFarmer;
+    QMap<QByteArray, QString> pathFiles;
+
+    bool isAuthorization = false;
+    QString myLogin;
 
     void onConnected();
     void onTextMessageReceived(QString message);
@@ -66,6 +72,7 @@ private:
     void handlerAllDataAchivementsUser(QJsonObject* object);
 public slots:
 
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на авторизацию
     void sendAuthorization(QString login, QString password);
@@ -76,15 +83,15 @@ public slots:
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на получение информации о пользователи (из таблицы farmer)
-    void sendGetInformationAboutUser(QString login);
+    void sendGetInformationAboutUser();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на получение информации о растениях пользователя (из таблицы farmer_plant)
-    void sendGetPlantsUser(QString login);
+    void sendGetPlantsUser();
 
     /// Добавление нового растения к пользователю
-    void sendAddPlantForUser(QString login, QString stage, QString date, QString typeGround, QString idPlant, QString name, QString avatar);
+    void sendAddPlantForUser(QString stage, QString typeGround, QString idPlant, QString name, QString avatar);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,7 +113,7 @@ public slots:
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на получения пользовательских задач
-    void sendGetUserTask(QString login);
+    void sendGetUserTask();
 
     /// Добавление пользовательской задачи
     void sendAddUserTask(QString login, QString text, QString datetime);
@@ -125,7 +132,7 @@ public slots:
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на получение всех логов для пользователя
-    void sendGetLogForUser(QString login);
+    void sendGetLogForUser();
 
     /// Отправка запроса на получение логов для конкретного растения пользователя
     void sendGetLogForPlant(QString idPlant);
@@ -136,13 +143,13 @@ public slots:
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /// Отправка запроса на получение ачивок конкретного пользователя
-    void sendGetAchivementsUser(QString login);
+    void sendGetAchivementsUser();
 
     /// Отправка запроса на получение информации об ачивки
     void sendGetInfoAboutAchivement(QString id);
 
     /// Отправка запроса на получение всех ачивок конкретного пользователя
-    void sendGetAllDataAchivementsUser(QString login);
+    void sendGetAllDataAchivementsUser();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,6 +159,22 @@ public slots:
     /// Изменение фазы роста растения
     void setStagePlant(QString instID, QString newValueStage);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    void emitPlantsFarmer();
+    void loadGlossary();
+    QString getPathForQML(QString path);
+    QString getNamePlant(int id_plant);
+    QString getAvatarPlant(int id_plant);
+    QString getMyName();
+    QString getMyAvatar();
+    QString getMyLogin();
+
+    int getCountCharPlants();
+    QString getCharPlantsForIndex(int index);
+    int getCountPlantsinChar(int index);
+    int getPlantsForIndexChar(QString c, int index);
+
+
 signals:
     void onAnswerAuthorization(bool result);
     void onAnswerRegistration(bool result);
@@ -179,7 +202,8 @@ signals:
     void onAnswerAllDataAchivementsUser();
 
 
-//    void onAddPlantFarmer(int, )
+    void onAddPlantFarmer(int id, QString namePlant, int plant_id, int stage, QString createdDate, int tipe_id, int status, QString name, QString pathAvatar);
+    void onAddPlant(int id, QString name, QString pathDescription, QString pathInfo, QString pathAvatar);
 };
 
 #endif // CLIENTGENERAL_H

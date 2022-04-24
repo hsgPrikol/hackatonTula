@@ -23,7 +23,7 @@ Image {
         anchors.fill: parent
 
         onClicked: {
-            loader.sourceComponent = listDialog
+            loader.sourceComponent = myGryadkiComponent
         }
     }
 
@@ -93,7 +93,7 @@ Image {
         anchors.fill: parent
 
         onClicked: {
-            loader.sourceComponent = listDialog
+            loader.sourceComponent = myGryadkiComponent
         }
     }
 

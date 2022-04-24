@@ -6,6 +6,8 @@ ApplicationWindow{
     id: root
     //    visibility: ApplicationWindow.FullScreen
 
+    property int selectedIdPlant
+
     width: 506
     height: 900
     visible: true

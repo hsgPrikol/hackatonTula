@@ -376,17 +376,18 @@ int ServerController::setStatusPlant(int inst_id, int new_value_status, QString 
 int ServerController::addFarmerPlant(FarmerPlant farmerPlant)
 {
     auto str = QString("INSERT INTO  farmer_plant (login, plant_id, stage, type_id, status, name, avatar)"
-                  " VALUES ('%0', %1, %2, %3, %4, '%5', '%6');")
+                  " VALUES ('%0', %1, %2, %3, %4, '%5', ?);")
             .arg(farmerPlant.login)
             .arg(farmerPlant.plant_id)
             .arg(farmerPlant.stage)
             .arg(farmerPlant.type_id)
             .arg(farmerPlant.status)
-            .arg(farmerPlant.name)
-            .arg(QString(farmerPlant.avatar));
+            .arg(farmerPlant.name);
 
-    QSqlQuery query = QSqlQuery(str);
-    //query.exec();
+    QSqlQuery query;
+    query.prepare(str);
+    query.addBindValue(farmerPlant.avatar);
+    query.exec();
 
     checkAchivement(farmerPlant.login,actionAchivement::addPlant);
 
