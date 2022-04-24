@@ -28,23 +28,24 @@ Rectangle {
 
     Text {
         id: text2
-        x: 0
-        y: 0
+        x: 20
+        y: 5
         width: 506
         height: 50
         color: "#ffffff"
-        text: qsTr("Дата регистрации\\n12.04.2022")
+        text: qsTr("Дата регистрации: ") + client.getMyBirthDate()
+
         font.pixelSize: 16
         verticalAlignment: Text.AlignTop
 
         Text {
             id: text3
-            x: 202
-            y: 48
+            x: 182
+            y: 43
             width: 102
             height: 20
             color: "#ffffff"
-            text: qsTr("Уровень: 5")
+            text: qsTr("Уровень: ")+client.getMyLvl()
             font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -57,7 +58,7 @@ Rectangle {
         y: 69
         width: 268
         height: 36
-        value: 0.77
+        value: client.getMyExp()/client.getExpToNextLvl()
 
         background: Rectangle{
             width: parent.width
@@ -88,7 +89,7 @@ Rectangle {
         width: 68
         height: 28
         color: "#ffffff"
-        text: qsTr("270/350")
+        text: client.getMyExp()+"/"+client.getExpToNextLvl()
         font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

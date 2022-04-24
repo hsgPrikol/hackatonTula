@@ -757,6 +757,31 @@ QString ClientGeneral::getMyLogin()
     return farmer.login;
 }
 
+int ClientGeneral::getMyExp()
+{
+    return farmer.exp;
+}
+
+int ClientGeneral::getMyLvl()
+{
+    return qRound(log2(farmer.exp));
+}
+
+int ClientGeneral::getExpToNextLvl()
+{
+    return qRound(pow(2,getMyLvl()+1));
+}
+
+QString ClientGeneral::getMyBirthDate()
+{
+    return farmer.birth_date.toString("dd-MM-yyyy");
+}
+
+QString ClientGeneral::getMyCreateDate()
+{
+    return farmer.registration_date.toString();
+}
+
 int ClientGeneral::getCountCharPlants()
 {
     return plantsChar.count();

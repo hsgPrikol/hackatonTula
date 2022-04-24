@@ -35,6 +35,12 @@ Rectangle {
                 height: 31
                 source: "qrc:/picture/arrow.tif"
                 fillMode: Image.PreserveAspectFit
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        loader.sourceComponent=plannerComponent
+                    }
+                }
             }
         }
 
@@ -53,7 +59,7 @@ Rectangle {
                 width: 303
                 height: 70
                 color: "#ffffff"
-                text: qsTr("Аккаунт")
+                text: client.getMyName()
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -88,7 +94,7 @@ Rectangle {
                     y: 0
                     width: 506
                     height: 314
-                    source: "qrc:/qtquickplugin/images/template_image.png"
+                    source: client.getMyAvatar()
                     fillMode: Image.PreserveAspectFit
                 }
             }

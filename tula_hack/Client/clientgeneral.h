@@ -7,6 +7,7 @@
 #include <QWebSocket>
 #include <QJsonArray>
 #include <QMap>
+#include <qmath.h>
 
 #include "../protocolcommunication.h"
 #include "../../SuperServer/farmer.h"
@@ -165,9 +166,15 @@ public slots:
     QString getPathForQML(QString path);
     QString getNamePlant(int id_plant);
     QString getAvatarPlant(int id_plant);
+
     QString getMyName();
     QString getMyAvatar();
     QString getMyLogin();
+    int getMyExp();
+    int getMyLvl();
+    int getExpToNextLvl();
+    QString getMyBirthDate();
+    QString getMyCreateDate();
 
     int getCountCharPlants();
     QString getCharPlantsForIndex(int index);

@@ -291,6 +291,10 @@ Rectangle {
             id: mouseArea
             anchors.fill: parent
             hoverEnabled: true
+
+            onClicked: {
+                client.sendRegistration(login.text,password1.text, email.text)
+            }
         }
     }
 }
