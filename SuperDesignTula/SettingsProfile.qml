@@ -82,7 +82,7 @@ Rectangle{
                 anchors.fill: parent
 
                 onClicked: {
-                    loader.sourceComponent = listDialog
+                    loader.sourceComponent = plannerComponent
                 }
             }
         }
@@ -121,7 +121,7 @@ Rectangle{
             y: 0
             width: app_width
             height: 220
-            source: lientData.getPathAvatar(index) != ""?"file:///" +currentDir+"/" + clientData.getPathAvatar(index):"qrc:/resourses/avatar/lobkov.tif"
+            source: client.getMyAvatar()//  lientData.getPathAvatar(index) != ""?"file:///" +currentDir+"/" + clientData.getPathAvatar(index):"qrc:/resourses/avatar/lobkov.tif"
 //            source: "qrc:/resourses/avatar/lobkov.tif"
             fillMode: Image.PreserveAspectFit
         }

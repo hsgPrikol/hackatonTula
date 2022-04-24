@@ -18,7 +18,7 @@ Item {
         color: !is_overdue && is_active ? (mouseArea.containsPress ? Qt.darker("#3fae51") : "#3fae51") : (mouseArea.containsPress ? Qt.darker("#FF0000") : "#FF0000")
         radius: button.height / 4
         opacity: 0.9
-        anchors.verticalCenter: light_icon.verticalCenter
+        //anchors.verticalCenter: light_icon.verticalCenter
 
         Text {
             color: "#f5f5f5"

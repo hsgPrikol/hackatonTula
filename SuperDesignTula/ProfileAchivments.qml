@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
 Rectangle {
-    id: profile
+    id: plantGlossaryInfo
 
     width: app_width
     height: app_height

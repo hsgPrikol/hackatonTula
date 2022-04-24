@@ -119,7 +119,7 @@ Item {
         width: root.width
         height: root.height - header.height
 
-        contentHeight: columnmain.height
+        contentHeight: columnmain.height +200
 
         Column{
             id: columnmain

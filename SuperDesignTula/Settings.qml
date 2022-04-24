@@ -34,8 +34,7 @@ Rectangle {
             y: 0
             width: dfltWidth
             height: 220
-//            source: "qrc:/resourses/avatar/lobkov.tif"
-            source: ""
+            source: client.getMyAvatar()
             fillMode: Image.PreserveAspectFit
         }
 
@@ -56,7 +55,7 @@ Rectangle {
             width: 415
             height: 40
             color: "#ffffff"
-            text: "nameText"
+            text: client.getMyName()
             font.pixelSize: 16
             verticalAlignment: Text.AlignVCenter
             minimumPixelSize: 16
@@ -243,7 +242,7 @@ Rectangle {
                     id: loginAnswerText
                     color: "#ffffff"
                     anchors.fill: parent
-                    text: currentUser.getLogin()
+                    text: client.getMyLogin()
                     font.pixelSize: 15
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: 10
@@ -303,7 +302,7 @@ Rectangle {
                     id: accountAnswerBirthDayText
                     color: "#ffffff"
                     anchors.fill: parent
-                    text: currentUser.getBirthDate()
+                    text: client.getMyBirthDate()
                     font.pixelSize: 15
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: 10

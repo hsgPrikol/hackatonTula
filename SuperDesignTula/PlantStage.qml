@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: root
     width: app_width
     height: 300

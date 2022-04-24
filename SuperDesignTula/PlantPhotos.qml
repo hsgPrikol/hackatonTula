@@ -1,10 +1,13 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: root
+    y:200
+    property var tmpItem
 
     width: app_width
     height: column.height
+
 
     function clearAll(){
         for(var i = 0; i < columnContact.data.length;i++)
@@ -15,7 +18,7 @@ Item {
 
     function additem(id, inst_id, descrip, pathImage, dateTime){
         if(selectedIdPlantFarmer ==inst_id){
-            tmp = tmpItem.createObject(column,
+            var tmp = tmpItem.createObject(column,
                                                {
                                                    id: id,
                                                    dateTime: dateTime,
@@ -70,6 +73,7 @@ Item {
     Column{
         anchors.horizontalCenter: root.horizontalCenter
         id: column
+        y:50
         spacing: 30
 
 
@@ -89,6 +93,7 @@ Item {
     }
 
     Component.onCompleted: {
+        console.log("@@@@@@@@@Photo.qml@@@@@@@@@")
         tmpItem = Qt.createComponent("Photo.qml");
         client.onAddPlantMedia.connect(additem)
         client.loadAllMedia();

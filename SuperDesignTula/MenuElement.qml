@@ -42,7 +42,7 @@ Rectangle{
 
     function cyberShop()
     {
-//        loader.sourceComponent = contactsList
+        loader.sourceComponent = cyberShopComponent
         burgermenu.closeNavDrawer()
         console.log("Её еще нет","cyberShop")
     }

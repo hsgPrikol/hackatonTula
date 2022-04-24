@@ -150,6 +150,15 @@ color: "#3fae51"
         }
     }
 
+    Component{
+        id: plantGlossaryInfoComponent
+
+        PlantGlossaryInfo{
+
+        }
+    }
+
+
     Loader{
         id: loader
 

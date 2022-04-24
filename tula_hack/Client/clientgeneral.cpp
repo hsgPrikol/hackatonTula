@@ -255,8 +255,8 @@ void ClientGeneral::handlerAllDataFromGlossary(QJsonObject *object)
                                 ProtocolCommunication::StringToByteArray(((jObj)[ProtocolCommunication::___IMAGE]).toString())
                              );
             pathFiles[plant->avatar] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"avatarPlan", QString::number(plant->id));
-            pathFiles[plant->description_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"descriptionPlant", QString::number(plant->id));
-            pathFiles[plant->info_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->avatar),"descriptionPlant", QString::number(plant->id));
+            pathFiles[plant->description_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->description_path),"descriptionPlant", QString::number(plant->id));
+            pathFiles[plant->info_path] = ProtocolCommunication::SaveBinaryFile(ProtocolCommunication::ByteArrayToString(plant->info_path),"infoPlant", QString::number(plant->id));
 
             plants[plant->id] = *plant;
             plantsChar[plant->name[0].toUpper()].push_back(*plant);
@@ -740,6 +740,7 @@ void ClientGeneral::loadAllMedia()
                     m.dateTime.toString("dd.MM.yyyy hh:mm")
                     );
     }
+    qDebug() <<"ClientGeneral::loadAllMedia";
 }
 
 QString ClientGeneral::getPathForQML(QString path)
@@ -755,6 +756,11 @@ QString ClientGeneral::getNamePlant(int id_plant)
 QString ClientGeneral::getAvatarPlant(int id_plant)
 {
     return getPathForQML(pathFiles[plants[id_plant].avatar]);
+}
+
+QString ClientGeneral::getDescriptPlant(int id_plant)
+{
+    return getPathForQML(pathFiles[plants[id_plant].info_path]);
 }
 
 QString ClientGeneral::getNamePlantFarmer(int id_plant)

@@ -85,7 +85,8 @@ Rectangle {
             }
             else
             {
-                //loader.sourceComponent = pageComponent
+                selectedIdPlant = idPlant
+                loader.sourceComponent = plantGlossaryInfoComponent
                 console.log("loader.sourceComponent = articles")
             }
 

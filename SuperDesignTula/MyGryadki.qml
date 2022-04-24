@@ -39,35 +39,35 @@ Rectangle {
 
 
     function loadContacts(){
-        for(var i = 0; i < columnContact.data.length;i++)
-        {
-            columnContact.data[i].destroy()
-        }
+//        for(var i = 0; i < columnContact.data.length;i++)
+//        {
+//            columnContact.data[i].destroy()
+//        }
 
-        var countD = clientData.getCountMapContacts();
+//        var countD = clientData.getCountMapContacts();
 
-        var tmp;
+//        var tmp;
 
-        for(var i=0;i<countD;i++){
-            tmp = tmpContactsChar.createObject(columnContact,
-                                               {
-                                                   indexRepeaterChar: i,
-                                                   textRepeaterChar: clientData.getCharMapContacts(i),
-                                                   //dfltHeight: clientData.getCountContactsInMap(clientData.getCharMapContacts(i)) * sizeHeightRectName
-                                                   //                                                   textRepeaterContactsName: contactsss.getName(i)
-                                               });
-        }
+//        for(var i=0;i<countD;i++){
+//            tmp = tmpContactsChar.createObject(columnContact,
+//                                               {
+//                                                   indexRepeaterChar: i,
+//                                                   textRepeaterChar: clientData.getCharMapContacts(i),
+//                                                   //dfltHeight: clientData.getCountContactsInMap(clientData.getCharMapContacts(i)) * sizeHeightRectName
+//                                                   //                                                   textRepeaterContactsName: contactsss.getName(i)
+//                                               });
+//        }
 
-//        if(createChatType == "just_chat")
-//            chat_title = "Создать чат"
-//        else if(createChatType == "group_chat")
-//            chat_title = "Создать группу"
-//        else if(createChatType == "private_chat")
-//            chat_title = "Создать приватный чат"
-//        else if(createChatType == "non_chat")
-//            chat_title = "Контакты"
+////        if(createChatType == "just_chat")
+////            chat_title = "Создать чат"
+////        else if(createChatType == "group_chat")
+////            chat_title = "Создать группу"
+////        else if(createChatType == "private_chat")
+////            chat_title = "Создать приватный чат"
+////        else if(createChatType == "non_chat")
+////            chat_title = "Контакты"
 
-        scrollContacts.contentHeight= clientData.getc * sizeHeightRectName
+//        scrollContacts.contentHeight= clientData.getc * sizeHeightRectName
     }
 
 
@@ -80,7 +80,7 @@ Rectangle {
     }
 
     function addPlantFarmer(id, namePlant, _plant_id, stage, createdDate, tipe_id, _status, name, pathAvatar){
-        tmp = patternPlantElement.createObject(columnContact,
+        this_tmp = patternPlantElement.createObject(columnContact,
                                            {
                                                //horizontalCenter: parent.horizontalCenter,
                                                stage_textfield: stage,

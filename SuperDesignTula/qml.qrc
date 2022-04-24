@@ -94,5 +94,6 @@
         <file>picture/settings.png</file>
         <file>Resultneuron.qml</file>
         <file>picture/imageFruit.png</file>
+        <file>PlantGlossaryInfo.qml</file>
     </qresource>
 </RCC>

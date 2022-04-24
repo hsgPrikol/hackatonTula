@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-Item {
+Rectangle {
     id: root
     width: app_width
     height: width/3+20

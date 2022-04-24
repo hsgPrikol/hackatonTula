@@ -168,6 +168,7 @@ public slots:
     QString getPathForQML(QString path);
     QString getNamePlant(int id_plant);
     QString getAvatarPlant(int id_plant);
+    QString getDescriptPlant(int id_plant);
 
     QString getNamePlantFarmer(int id_plant);
     QString getAvatarPlantFarmer(int id_plant);
