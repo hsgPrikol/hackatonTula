@@ -26,7 +26,7 @@ public:
 
 
 private:
-    const QUrl URL_SERVER = QUrl(QStringLiteral("ws://localhost:1234"));
+    const QUrl URL_SERVER = QUrl(QStringLiteral("ws://195.133.197.105:1234"));
 
     QWebSocket socketServer;
 
