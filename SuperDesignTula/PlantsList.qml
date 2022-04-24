@@ -85,6 +85,10 @@ Rectangle {
 
     Rectangle{
         anchors.fill: parent
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
         width: parent.width
         height: parent.height
         color: "black"
@@ -175,6 +179,25 @@ Rectangle {
 
                     onClicked: {
                         console.log("Здесь будет фильтр")
+                    }
+                }
+            }
+
+            Image {
+                id: camera
+                x: 347
+                y: 4
+                width: 64
+                height: 52
+                source: "picture/camera.png"
+                fillMode: Image.PreserveAspectFit
+
+                MouseArea {
+                    id: mouseArea
+                    anchors.fill: parent
+
+                    onClicked: {
+                        loader.sourceComponent = cameraNeuronComponent
                     }
                 }
             }

@@ -74,5 +74,6 @@
         <file>picture/Лента.png</file>
         <file>picture/Форум.png</file>
         <file>Cameraneuron.qml</file>
+        <file>picture/camera.png</file>
     </qresource>
 </RCC>
