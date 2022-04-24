@@ -1,4 +1,6 @@
-QT += quick sql multimedia multimediawidgets websockets
+QT += quick sql multimedia multimediawidgets websockets \
+    widgets
+QT += network core
 
 CONFIG += c++11
 
@@ -18,7 +20,8 @@ SOURCES += \
         ../tula_hack/Client/clientgeneral.cpp \
         ../tula_hack/protocolcommunication.cpp \
         dataleft.cpp \
-        main.cpp
+        main.cpp \
+        planidapi.cpp
 
 RESOURCES += qml.qrc
 
@@ -44,4 +47,5 @@ HEADERS += \
     ../SuperServer/plant.h \
     ../tula_hack/Client/clientgeneral.h \
     ../tula_hack/protocolcommunication.h \
-    dataleft.h
+    dataleft.h \
+    planidapi.h

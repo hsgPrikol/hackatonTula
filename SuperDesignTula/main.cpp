@@ -3,6 +3,7 @@
 #include "dataleft.h"
 #include <QQmlContext>
 #include <../tula_hack/Client/clientgeneral.h>
+#include "planidapi.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,9 +18,11 @@ int main(int argc, char *argv[])
     DateLeft dataleft;
 
     ClientGeneral client;
+    PlantID_API planAPI;
 
     engine.rootContext()->setContextProperty("client", &client);
     engine.rootContext()->setContextProperty("dateLeft", &dataleft);
+    engine.rootContext()->setContextProperty("planAPI", &planAPI);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

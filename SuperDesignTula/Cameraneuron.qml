@@ -8,6 +8,7 @@ Rectangle {
 
     color: "#f4f5f6"
     property var img
+    property var imgPath
 
     Rectangle {
         id: header
@@ -86,8 +87,16 @@ Rectangle {
             onImageCaptured: {
 
                 photoPreview.source = preview
+                img = preview
+
+            }
+
+            onImageSaved: {
+                imgPath = path
             }
         }
+
+
     }
     Rectangle{
         x: 0
@@ -96,8 +105,12 @@ Rectangle {
         height: 423
         color: "#00000000"
 
+//        border.color: "red"
+
         Image {
             id: photoPreview
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectFit
 
             source: img
         }
@@ -158,6 +171,22 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
         }
 
+        function onDataReceived(plant_name, probability, url, value)
+        {
+            value_camera_neuron = value;
+            plant_name_camera_neuron = plant_name
+            url_camera_neuron = url
+            probability_camera_neuron = probability
+            img_camera_neuron = img
+
+//            console.log(plant_name)
+//            console.log(probability)
+//            console.log(url)
+//            console.log(value)
+
+            loader.sourceComponent = resultNeuronComponent;
+        }
+
         MouseArea {
             id: mouseArea1
             x: 0
@@ -166,11 +195,15 @@ Rectangle {
             height: 76
 
             onClicked: {
-                loader.sourceComponent =resultNeuronComponent;
-                //добавить новое окно нейронки
+                planAPI.createRequestFromPath(imgPath)
             }
         }
+
+        Component.onCompleted: {
+            planAPI.dataReceived.connect(onDataReceived)
+        }
     }
+
 
 
 }
