@@ -6,8 +6,8 @@ import QtGraphicalEffects 1.0
 
 Image {
     id: supporting
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
     source: "qrc:/picture/phone.jpg"
 //    color: "#80000000"
 

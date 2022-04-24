@@ -3,13 +3,14 @@ import QtQuick 2.0
 Item {
     id: root
     property int cheight: column.height
-    width: 506
+    width: app_height
     property string textR: "Месяц"
     height: 10+30+items.height
 
             Column{
                 id: column
-                anchors.horizontalCenter: root.horizontalCenter
+                width: parent.width
+                //anchors.horizontalCenter: root.horizontalCenter
                 Item{
                     width: 1
                     height: 10
@@ -22,7 +23,7 @@ Item {
                     color: "#f5f5f5"
                     opacity: .7
 
-                    anchors.horizontalCenter: column.horizontalCenter
+                    anchors.horizontalCenter: items.horizontalCenter
 
                     Text{
                         anchors.fill: parent

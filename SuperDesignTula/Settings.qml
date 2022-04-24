@@ -7,8 +7,8 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id: root
 
-    property int dfltWidth: 506
-    property int dfltHeight: 838
+    property int dfltWidth: app_width
+    property int dfltHeight: app_height
     property color noColor: "#00000000"
     property real customOpacity: 0.7
     property color biruzoviu: "#3fae51"
@@ -43,7 +43,7 @@ Rectangle {
             id: nameMask
             x: 0
             y: 180
-            width: 506
+            width: app_width
             height: 40
             color: biruzoviu
             opacity: customOpacity
@@ -354,7 +354,7 @@ Rectangle {
     }
     Rectangle {
         id: hatNotificationMask
-        width: 506
+        width: app_width
         height: 50
         color: "#00000000"
         x: 0

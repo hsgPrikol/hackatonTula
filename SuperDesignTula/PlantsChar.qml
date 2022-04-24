@@ -7,7 +7,7 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id: root
 
-    property int dfltWidth: 506
+    property int dfltWidth: app_width
     property int dfltHeight: 100
     property color noColor: "#00000000"
     property real customOpacity: 0.7

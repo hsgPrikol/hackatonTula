@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 
 Item {
     id: root
-    width: 506
+    width: app_width
     height: parent.width/2.1
     property string icon_path: "qrc:/picture/strawberry.png"
 

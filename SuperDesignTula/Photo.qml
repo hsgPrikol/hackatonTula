@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 506 - 20
+    width: app_width - 20
     height: photo.height + 70
     property string description_text: "Описание"
 

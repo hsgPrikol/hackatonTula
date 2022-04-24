@@ -3,7 +3,7 @@ import QtQuick 2.0
 Item {
     id: root
 
-    width: 500
+    width: app
     height: 180
 
     Rectangle{

@@ -2,8 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.15
 
 Rectangle {
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
 
     color: "#f4f5f6"
     property var img
@@ -12,7 +12,7 @@ Rectangle {
         id: header
         x: 0
         y: 0
-        width: 506
+        width: app_width
         height: 70
         color: "#3fae51"
 
@@ -61,7 +61,7 @@ Rectangle {
         id: rectangle1
         x: 0
         y: 68
-        width: 506
+        width: app_width
         height: 832
         color: "#7f7f7f"
 

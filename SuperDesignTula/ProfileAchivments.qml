@@ -7,15 +7,15 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id: profile
 
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
     color: "#00000000"
 
     Rectangle {
         id: header
         x: 0
         y: 0
-        width: 506
+        width: app_width
         height: 70
         color: "#3fae51"
 
@@ -71,7 +71,7 @@ Rectangle {
         id: scrollView
         x: 0
         y: 69
-        width: 506
+        width: app_width
         height: 831
         contentHeight: 1000
         contentWidth: parent.width
@@ -84,7 +84,7 @@ Rectangle {
 
             Rectangle {
                 id: photo
-                width: 506
+                width: app_width
                 height: 314
                 color: "#ffffff"
 
@@ -92,7 +92,7 @@ Rectangle {
                     id: image
                     x: 0
                     y: 0
-                    width: 506
+                    width: app_width
                     height: 314
                     source: client.getMyAvatar()
                     fillMode: Image.PreserveAspectFit

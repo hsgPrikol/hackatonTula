@@ -3,8 +3,8 @@ import QtQuick.Controls 2.15
 
 Rectangle {
     id: autorization
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
 
 
     property real customOpacity: 0.7

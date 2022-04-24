@@ -1,9 +1,10 @@
 import QtQuick 2.0
 
+
 Item {
     id: root
 
-    width: 480
+    width: app_height
     height: 210
 
     property string stage_textfield: "I"
@@ -95,6 +96,7 @@ Item {
                         height: width
                         anchors.centerIn: image_background
                         source: icon_path
+                        fillMode: Image.PreserveAspectFit
                     }
 
                     Rectangle{

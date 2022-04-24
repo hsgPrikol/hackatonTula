@@ -3,8 +3,8 @@ import QtMultimedia 5.12
 import QtQuick.Controls 2.12
 
 Rectangle {
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
 
     color: "#f4f5f6"
     property var img
@@ -13,7 +13,7 @@ Rectangle {
         id: header
         x: 0
         y: 0
-        width: 506
+        width: app_width
         height: 70
         color: "#3fae51"
 
@@ -71,7 +71,7 @@ Rectangle {
         x: 0
         y: 67
 
-        width: 506
+        width: app_width
         height: 330
         color: "#00000000"
         VideoOutput {
@@ -92,7 +92,7 @@ Rectangle {
     Rectangle{
         x: 0
         y: 403
-        width: 506
+        width: app_width
         height: 423
         color: "#00000000"
 

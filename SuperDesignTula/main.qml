@@ -8,8 +8,10 @@ ApplicationWindow{
 
     property int selectedIdPlant
 
-    width: 506
-    height: 900
+    width: Screen.width
+    height: Screen.height
+    property int app_width: width
+    property int app_height: height
     visible: true
     title: qsTr("Hello World")
 
@@ -166,7 +168,7 @@ color: "#3fae51"
 
     Burgermenu{
         id: burgermenu
-        x: -506
+        x: -app_width
     }
 
     Component{

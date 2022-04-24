@@ -3,8 +3,8 @@ import QtQuick.Controls 2.12
 
 Item {
     id: root
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
 
     Rectangle {
         width: parent.width
@@ -29,7 +29,7 @@ Item {
             id: rectangle
             x: 0
             y: 0
-            width: 506
+            width: app_width
             height: 60
             color: "#3fae51"
             Rectangle {
@@ -108,11 +108,16 @@ Item {
         //        anchors.left: root.left
         //        anchors.leftMargin: 13
         anchors.top: header.bottom
-        width: root.width
-        height: root.height - header.height
+        width: app_width
+        height: app_height - header.height
         clip: true
         contentHeight: month.cheight
+        contentWidth: app_width
         Column{
+//            anchors.horizontalCenter: parent.right
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            width: app_height
             spacing: 10
             Repeater{
                 model: 3

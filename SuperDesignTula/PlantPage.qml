@@ -3,8 +3,8 @@ import QtQuick.Controls 2.12
 
 Item {
     id: root
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
     Image {
         id: mainPhone
         opacity: 0.6
@@ -21,7 +21,7 @@ Item {
         id: rectangle
         x: 0
         y: 0
-        width: 506
+        width: app_width
         height: 60
         color: "#3fae51"
 
