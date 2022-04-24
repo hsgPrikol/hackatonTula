@@ -3,7 +3,7 @@
 #include "dataleft.h"
 #include <QQmlContext>
 #include <../tula_hack/Client/clientgeneral.h>
-#include "planidapi.h"
+#include "plantid_api.h"
 
 int main(int argc, char *argv[])
 {

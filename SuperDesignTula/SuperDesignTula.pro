@@ -21,7 +21,7 @@ SOURCES += \
         ../tula_hack/protocolcommunication.cpp \
         dataleft.cpp \
         main.cpp \
-        planidapi.cpp
+        plantid_api.cpp
 
 RESOURCES += qml.qrc
 
@@ -48,4 +48,4 @@ HEADERS += \
     ../tula_hack/Client/clientgeneral.h \
     ../tula_hack/protocolcommunication.h \
     dataleft.h \
-    planidapi.h
+    plantid_api.h
