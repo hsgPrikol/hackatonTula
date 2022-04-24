@@ -142,10 +142,18 @@ color: "#3fae51"
 
         //должно быть!
 //        sourceComponent: plannerComponent
+        sourceComponent: page
     }
 
     Burgermenu{
         id: burgermenu
         x: -506
+    }
+
+    Component{
+        id: page
+        PlantPage{
+
+        }
     }
 }
