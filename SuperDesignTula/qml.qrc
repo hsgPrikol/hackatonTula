@@ -92,5 +92,7 @@
         <file>picture/price2149.png</file>
         <file>picture/price2490.png</file>
         <file>picture/settings.png</file>
+        <file>Resultneuron.qml</file>
+        <file>picture/imageFruit.png</file>
     </qresource>
 </RCC>

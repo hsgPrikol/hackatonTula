@@ -17,7 +17,13 @@ color: "#3fae51"
 
 
 
+    Component{
+        id: resultNeuronComponent
 
+        Resultneuron{
+
+        }
+    }
 
     Component{
         id: cyberShopComponent
