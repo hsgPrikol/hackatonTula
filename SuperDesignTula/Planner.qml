@@ -15,7 +15,7 @@ Item {
             id: mainPhone
             opacity: 0.6
             anchors.fill: parent
-            source: "picture/phone.jpg"
+            source: "qrc:/picture/phone.jpg"
         }
 }
     Rectangle{

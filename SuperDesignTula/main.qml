@@ -17,6 +17,17 @@ color: "#3fae51"
 
 
 
+
+
+    Component{
+        id: cyberShopComponent
+
+        Cybershop{
+
+        }
+    }
+
+
     Component{
         id: cameraNeuronComponent
 
@@ -133,7 +144,7 @@ color: "#3fae51"
 
 //        sourceComponent: plantcreator
 //        sourceComponent: plantElement
-        sourceComponent: autorizationComponent
+        sourceComponent: cyberShopComponent
 
 
 
@@ -142,7 +153,7 @@ color: "#3fae51"
 
         //должно быть!
 //        sourceComponent: plannerComponent
-        sourceComponent: page
+
     }
 
     Burgermenu{
@@ -151,7 +162,7 @@ color: "#3fae51"
     }
 
     Component{
-        id: page
+        id: pageComponent
         PlantPage{
 
         }

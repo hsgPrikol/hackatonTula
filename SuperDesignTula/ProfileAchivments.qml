@@ -33,7 +33,7 @@ Rectangle {
                 y: 20
                 width: 44
                 height: 31
-                source: "picture/arrow.tif"
+                source: "qrc:/picture/arrow.tif"
                 fillMode: Image.PreserveAspectFit
             }
         }
@@ -53,8 +53,8 @@ Rectangle {
                 width: 303
                 height: 70
                 color: "#ffffff"
-                text: qsTr("Text")
-                font.pixelSize: 16
+                text: qsTr("Аккаунт")
+                font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }

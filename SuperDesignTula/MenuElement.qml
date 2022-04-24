@@ -63,7 +63,7 @@ Rectangle{
 
     property var textArray: ["Мои грядки", "Глоссарий", "Ежедневник", "Лента", "Cyber-магазин", "Форум"]
 
-    property var pictureArray: ["qrc:/picture/Mygryadki.png", "qrc:/picture/Glossariy.png", "qrc:/picture/Ежедневник.png", "qrc:/picture/Лента.png", "qrc:/picture/Cyber-Shop.png", "qrc:/picture/Форум.png"]
+    property var pictureArray: ["qrc:/picture/Mygryadki.png", "qrc:/picture/Glossariy.png", "qrc:/picture/everydaying.png", "qrc:/picture/lenta.png", "qrc:/picture/Cyber-Shop.png", "qrc:/picture/phorum.png"]
 
 
     width: dfltWidthElementMenu

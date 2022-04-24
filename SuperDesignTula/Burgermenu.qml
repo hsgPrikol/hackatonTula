@@ -35,10 +35,6 @@ Rectangle {
     color: noColor
     //    opacity: 0.3
 
-    property var textArray: ["Создать чат", "Создать группу", "Создать приватный чат", "Контакты"]
-    property var pictureArray: ["qrc:/resourses/create chat_2.tif", "qrc:/resourses/shtorka/plusplus.tif", "qrc:/resourses/shtorka/zakochek.tif", "qrc:/resourses/shtorka/contakti.tif"]
-
-
     MouseArea{
         anchors.fill: parent
     }
@@ -113,6 +109,19 @@ Rectangle {
                         }
                     }
                 }
+
+                MouseArea {
+                    id: mouseArea
+                    x: 0
+                    y: 0
+                    width: 263
+                    height: 60
+
+                    onClicked: {
+                        loader.sourceComponent = profileAchivmentComponent
+                        burgermenu.closeNavDrawer()
+                    }
+                }
             }
 
             Rectangle {
@@ -129,7 +138,7 @@ Rectangle {
                     width: 26
                     height: 25
 
-                    source: "qrc:/resourses/shtorka/nastroiki.tif"
+                    source: "qrc:/picture/settings.png"
                     //                fillMode: Image.PreserveAspectFit
                 }
 
@@ -137,8 +146,8 @@ Rectangle {
                     anchors.fill: parent
 
                     onClicked: {
-                        loader.sourceComponent = settingsNav;
-                        navDrawer.closeNavDrawer()
+                        loader.sourceComponent = settingsComponent
+                        burgermenu.closeNavDrawer()
                     }
                 }
             }
@@ -156,7 +165,7 @@ Rectangle {
                     anchors.leftMargin: 10
                     anchors.fill: parent
                     color: "#ffffff"
-                    text: currentUser.getName()
+                    text: "Подсолнух"
                     font.pixelSize: fontSize
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -176,7 +185,7 @@ Rectangle {
                     anchors.leftMargin: 10
                     anchors.fill: parent
                     color: "#ffffff"
-                    text: currentUser.getLogin()
+                    text: "Логин"
                     font.pixelSize: 12
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -285,3 +294,9 @@ Rectangle {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.75}
+}
+##^##*/

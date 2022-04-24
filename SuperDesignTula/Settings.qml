@@ -35,7 +35,7 @@ Rectangle {
             width: dfltWidth
             height: 220
 //            source: "qrc:/resourses/avatar/lobkov.tif"
-            source: currentUser.getAvatarFile() != ""?"file:///" +currentDir+"/" + currentUser.getAvatarFile():"qrc:/resourses/avatar/lobkov.tif"
+            source: ""
             fillMode: Image.PreserveAspectFit
         }
 
@@ -56,7 +56,7 @@ Rectangle {
             width: 415
             height: 40
             color: "#ffffff"
-            text: currentUser.getName();
+            text: "nameText"
             font.pixelSize: 16
             verticalAlignment: Text.AlignVCenter
             minimumPixelSize: 16

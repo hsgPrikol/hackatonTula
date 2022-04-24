@@ -45,7 +45,6 @@
         <file>picture/stage4.png</file>
         <file>PlantPhotos.qml</file>
         <file>Photo.qml</file>
-        <file>picture/Рисунок1.jpg</file>
         <file>MenuElement.qml</file>
         <file>picture/Achivments.png</file>
         <file>picture/Calendar.png</file>
@@ -76,17 +75,22 @@
         <file>achivments/rost.png</file>
         <file>achivments/temperature.png</file>
         <file>achivments/water.png</file>
-        <file>achivments/Голосеменные.png</file>
-        <file>achivments/Неизвестное.png</file>
-        <file>achivments/Цветковые.png</file>
+        <file>achivments/golosemenniu.png</file>
+        <file>achivments/unknownGuadrden.png</file>
+        <file>achivments/cvetkovie.png</file>
         <file>PlantProfile.qml</file>
         <file>PlantsChar.qml</file>
         <file>PlantsList.qml</file>
         <file>picture/Cyber-Shop.png</file>
-        <file>picture/Ежедневник.png</file>
-        <file>picture/Лента.png</file>
-        <file>picture/Форум.png</file>
+        <file>picture/everydaying.png</file>
+        <file>picture/lenta.png</file>
+        <file>picture/phorum.png</file>
         <file>Cameraneuron.qml</file>
         <file>picture/camera.png</file>
+        <file>Cybershop.qml</file>
+        <file>picture/price1700.png</file>
+        <file>picture/price2149.png</file>
+        <file>picture/price2490.png</file>
+        <file>picture/settings.png</file>
     </qresource>
 </RCC>

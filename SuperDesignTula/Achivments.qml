@@ -158,7 +158,7 @@ Rectangle {
                 id: cirkleprogressbar
                 width: 120
                 height: 120
-                sourceImg: "qrc:/achivments/Цветковые.png"
+                sourceImg: "qrc:/achivments/cvetkovie.png"
                 value: 0.7
                 valueProgress: "140/200"
                 namePlant: "Цветковые"
@@ -169,7 +169,7 @@ Rectangle {
                     y: 40
                     width: 40
                     height: 40
-                    source: "achivments/Цветковые.png"
+                    source: "qrc:/achivments/cvetkovie.png"
                     sourceSize.height: 35
                     sourceSize.width: 35
                     fillMode: Image.Stretch
@@ -188,7 +188,7 @@ Rectangle {
                     y: 40
                     width: 40
                     height: 40
-                    source: "achivments/Голосеменные.png"
+                    source: "qrc:/achivments/golosemenniu.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -204,7 +204,7 @@ Rectangle {
                     y: 40
                     width: 40
                     height: 40
-                    source: "achivments/Неизвестное.png"
+                    source: "qrc:/achivments/unknownGuadrden.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -223,7 +223,7 @@ Rectangle {
                     y: 40
                     width: 40
                     height: 40
-                    source: "achivments/Неизвестное.png"
+                    source: "qrc:/achivments/unknownGuadrden.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -252,7 +252,7 @@ Rectangle {
                 y: 40
                 width: 40
                 height: 40
-                source: "achivments/Неизвестное.png"
+                source: "qrc:/achivments/unknownGuadrden.png"
                 sourceSize.height: 68
                 sourceSize.width: 67
                 fillMode: Image.Stretch
@@ -273,7 +273,7 @@ Rectangle {
                 y: 40
                 width: 40
                 height: 40
-                source: "achivments/Неизвестное.png"
+                source: "qrc:/achivments/unknownGuadrden.png"
                 fillMode: Image.PreserveAspectFit
             }
         }
@@ -292,7 +292,7 @@ Rectangle {
                 y: 40
                 width: 40
                 height: 40
-                source: "achivments/Неизвестное.png"
+                source: "qrc:/achivments/unknownGuadrden.png"
                 fillMode: Image.PreserveAspectFit
             }
         }
