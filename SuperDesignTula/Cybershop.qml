@@ -2,8 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.15
 
 Rectangle{
-    width: 506
-    height: 900
+    width: app_width
+    height: app_height
     color: "#00000000"
 
     property var listPrice: ["qrc:/picture/price1700.png", "qrc:/picture/price2149.png", "qrc:/picture/price2490.png"]
@@ -58,7 +58,7 @@ Rectangle{
             id: rectangle
             x: 0
             y: 0
-            width: 506
+            width: app_width
             height: 60
             color: "#3fae51"
 

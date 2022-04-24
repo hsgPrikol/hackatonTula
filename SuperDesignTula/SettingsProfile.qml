@@ -8,8 +8,8 @@ import QtQuick.Dialogs 1.2
 Rectangle{
     id: root
 
-    property int dfltWidth: 506
-    property int dfltHeight: 900
+    width: app_width
+    height: app_height
     property color noColor: "#00000000"
     property real customOpacity: 0.7
     property color biruzoviu: "#3fae51"
@@ -25,8 +25,8 @@ Rectangle{
 
     property int fontSize: 14
 
-    width: dfltWidth
-    height: dfltHeight
+//    width: app_width
+//    height: app_height
     color: "#00000000"
 
     property int heightToolSettings: 60
@@ -111,7 +111,7 @@ Rectangle{
         id: pictureMask
         x: 0
         y: 60
-        width: 506
+        width: app_width
         height: 220
         color: "#ffffff"
 
@@ -119,7 +119,7 @@ Rectangle{
             id: avatar
             x: 0
             y: 0
-            width: 506
+            width: app_width
             height: 220
             source: lientData.getPathAvatar(index) != ""?"file:///" +currentDir+"/" + clientData.getPathAvatar(index):"qrc:/resourses/avatar/lobkov.tif"
 //            source: "qrc:/resourses/avatar/lobkov.tif"
@@ -130,7 +130,7 @@ Rectangle{
             id: nameMask
             x: 0
             y: 180
-            width: 506
+            width: app_width
             height: 40
             color: biruzoviu
             opacity: customOpacity

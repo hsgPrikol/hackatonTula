@@ -6,8 +6,8 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id: achivments
-    width: 506
-    height: 650
+    width: app_width
+    height: app_height
     color: "#3fae51"
 
     property var listAchivmentImage: ["qrc:/achivments/water.png", "qrc:/achivments/temperature.png","qrc:/achivments/lights.png","qrc:/achivments/cyberMandarin.png","qrc:/achivments/dictinary.png", "qrc:/achivments/rost.png","qrc:/achivments/clock.png","qrc:/achivments/cactus.png","qrc:/achivments/photo.png","qrc:/achivments/level.png","qrc:/achivments/diedPlant.png", "qrc:/achivments/fine.png"]
@@ -30,7 +30,7 @@ Rectangle {
         id: text2
         x: 20
         y: 5
-        width: 506
+        width: app_width
         height: 50
         color: "#ffffff"
         text: qsTr("Дата регистрации: ") + client.getMyBirthDate()
@@ -106,7 +106,7 @@ Rectangle {
         property var nameText: "Аккаунт"
         x: 0
         y: 140
-        width: 506
+        width: app_width
         Text {
 
             x: 191
@@ -143,7 +143,7 @@ Rectangle {
         id: rectangle2
         x: 0
         y: 212
-        width: 506
+        width: app_width
         height: 120
         color: "#3fae51"
 
@@ -151,7 +151,7 @@ Rectangle {
             id: rowLayout
             x: 0
             y: 0
-            width: 506
+            width: app_width
             height: 120
             spacing: 10
 
@@ -235,7 +235,7 @@ Rectangle {
         id: rectangle3
         x: 0
         y: 332
-        width: 506
+        width: app_width
         height: 120
         color: "#3fae51"
 
@@ -308,7 +308,7 @@ Rectangle {
         property var nameText: "Аккаунт"
         x: 0
         y: 458
-        width: 506
+        width: app_width
         Text {
 
             x: 191

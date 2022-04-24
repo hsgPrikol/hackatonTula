@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 
 Item {
     id: root
-    width: 506
+    width: app_width
     height: width/3+20
 
         Rectangle {

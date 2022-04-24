@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 506
+    width: app_width
     height: 300
     Rectangle {
         id: hatAccountMask

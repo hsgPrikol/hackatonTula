@@ -7,8 +7,8 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id: addContact
 
-    property int dfltWidth: 506
-    property int dfltHeight: 900
+    property int dfltWidth: app_width
+    property int dfltHeight: app_height
     property color noColor: "#00000000"
     property real customOpacity: 0.7
     property color biruzoviu: "#3fae51"
@@ -115,10 +115,11 @@ Rectangle {
             opacity: customOpacity
         }
         Rectangle {
+            z: 1
             id: rectangle
             x: 0
             y: 0
-            width: 506
+            width: app_width
             height: 60
             color: "#3fae51"
 
@@ -203,19 +204,25 @@ Rectangle {
             id: rectangle4
             x: 0
             y: 59
-            width: 506
+            width: app_width
             height: 841
             color: "#00000000"
 
             ScrollView{
                 id: scrollContacts
                 anchors.fill: parent
-                width: parent.width
-                height: parent.height
+//                width: parent.width
+//                anchors.topMargin: header.height
+//                height: app_height*5
                 contentWidth: parent.width
 
+                anchors.top: header.bottom
+                width: app_width
+                height: app_height
+                clip: false
 
-                clip: true
+
+               // clip: true
 
                 Column{
                     id: columnContact

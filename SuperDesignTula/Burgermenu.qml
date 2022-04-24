@@ -6,8 +6,8 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id: navigationDrawer
-    property int dfltWidth: 506
-    property int dfltHeight: 900
+    property int dfltWidth: app_width
+    property int dfltHeight: app_height
     width: dfltWidth//Math.min(dfltWidth, dfltHeight) / 3 * 2
     height: dfltHeight
 

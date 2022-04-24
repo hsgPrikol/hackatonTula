@@ -3,9 +3,7 @@ import QtQuick 2.0
 Item {
     id: root
 
-    property var tmpItem
-
-    width: 506
+    width: app_width
     height: column.height
 
     function clearAll(){
